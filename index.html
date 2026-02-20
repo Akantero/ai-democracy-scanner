@@ -135,6 +135,16 @@
     <div class="signal-list" id="signal-list"></div>
   </div>
 
+  <div class="card" style="margin-bottom:1.5rem">
+    <h2>Skenaariokenttä — signaalien sijoittuminen</h2>
+    <div style="position:relative;height:420px"><canvas id="quadrant-chart"></canvas></div>
+    <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--muted);margin-top:0.5rem;padding:0 0.5rem">
+      <span>← Nykyiset instituutiot</span>
+      <span style="color:#64748b;font-style:italic">Pisteiden koko = signaalin vahvuus · Vie hiiri pisteen päälle nähdäksesi otsikon</span>
+      <span>Radikaalisti uusi →</span>
+    </div>
+  </div>
+
   <div class="grid">
     <div class="card">
       <h2>Aikajana — signaalit viikottain</h2>
@@ -243,7 +253,101 @@ function renderTimeline() {
   });
 }
 
-function renderDomain() {
+// ── QUADRANT CHART ─────────────────────────────────────────────────────────
+let quadChart;
+const QUADRANT = {
+  STRENGTHENS:   { qx: -1, qy:  1 },
+  NEW_DEMOCRACY: { qx:  1, qy:  1 },
+  WEAKENS:       { qx: -1, qy: -1 },
+  COLLAPSE:      { qx:  1, qy: -1 },
+  AMBIGUOUS:     { qx:  0, qy:  0 },
+};
+const STRENGTH_SIZE = { weak: 5, moderate: 9, strong: 14 };
+
+function jitter(v, spread) { return v + (Math.random() - 0.5) * spread; }
+
+function renderQuadrant() {
+  const data = filtered();
+  const points = data.map(s => {
+    const q = QUADRANT[s.primary_category] || QUADRANT.AMBIGUOUS;
+    return {
+      x: jitter(q.qx * 0.55, 0.7),
+      y: jitter(q.qy * 0.55, 0.7),
+      title: s.title,
+      cat: s.primary_category,
+      r: STRENGTH_SIZE[s.signal_strength] || 6,
+    };
+  });
+
+  // Group by category for separate datasets (so legend works)
+  const cats = ["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"];
+  const datasets = cats.map(cat => ({
+    label: CAT_LABELS[cat],
+    data: points.filter(p => p.cat === cat).map(p => ({ x: p.x, y: p.y, title: p.title, r: p.r })),
+    backgroundColor: CAT_COLORS[cat] + "aa",
+    borderColor: CAT_COLORS[cat],
+    borderWidth: 1,
+  }));
+
+  if (quadChart) quadChart.destroy();
+  quadChart = new Chart(document.getElementById("quadrant-chart"), {
+    type: "bubble",
+    data: { datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: "#94a3b8", boxWidth: 12, filter: i => i.text !== "Monitulkintainen" || points.some(p => p.cat === "AMBIGUOUS") } },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.raw.title ? ctx.raw.title.slice(0, 80) + (ctx.raw.title.length > 80 ? "…" : "") : "",
+            title: () => "",
+          }
+        },
+        // Quadrant labels drawn as a custom plugin
+        quadrantLabels: {}
+      },
+      scales: {
+        x: { min: -1, max: 1, grid: { color: "#1e293b" }, ticks: { display: false },
+             border: { color: "#334155", width: 1 } },
+        y: { min: -1, max: 1, grid: { color: "#1e293b" }, ticks: { display: false },
+             border: { color: "#334155", width: 1 } },
+      },
+    },
+    plugins: [{
+      id: "quadrantLabels",
+      afterDraw(chart) {
+        const { ctx, chartArea: { left, right, top, bottom, width, height } } = chart;
+        const cx = left + width / 2, cy = top + height / 2;
+        ctx.save();
+        // Cross-hair
+        ctx.strokeStyle = "#334155"; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+        ctx.beginPath(); ctx.moveTo(cx, top); ctx.lineTo(cx, bottom); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(left, cy); ctx.lineTo(right, cy); ctx.stroke();
+        ctx.setLineDash([]);
+        // Axis labels
+        ctx.fillStyle = "#475569"; ctx.font = "600 11px system-ui"; ctx.textAlign = "center";
+        ctx.fillText("Demokratia vahvistuu", cx, top + 16);
+        ctx.fillText("Demokratia heikentyy / romahtaa", cx, bottom - 6);
+        ctx.save(); ctx.translate(left + 14, cy); ctx.rotate(-Math.PI/2);
+        ctx.fillText("Nykyiset instituutiot", 0, 0); ctx.restore();
+        ctx.save(); ctx.translate(right - 14, cy); ctx.rotate(Math.PI/2);
+        ctx.fillText("Radikaalisti uusi", 0, 0); ctx.restore();
+        // Quadrant corner labels
+        const ql = [
+          { text: "Vahvistuu", x: left + 8,     y: top + 32,    align: "left"  },
+          { text: "Uusi demokratia", x: right - 8,  y: top + 32,    align: "right" },
+          { text: "Heikentyy",  x: left + 8,     y: bottom - 20, align: "left"  },
+          { text: "Romahtaa",   x: right - 8,    y: bottom - 20, align: "right" },
+        ];
+        ctx.font = "500 10px system-ui"; ctx.fillStyle = "#334155";
+        ql.forEach(q => { ctx.textAlign = q.align; ctx.fillText(q.text, q.x, q.y); });
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+
   const doms = {};
   signals.forEach(s => { doms[s.domain] = (doms[s.domain]||0)+1; });
   if (domChart) domChart.destroy();
@@ -254,7 +358,7 @@ function renderDomain() {
   });
 }
 
-function render() { renderSignals(filtered()); renderStats(); renderTimeline(); renderDomain(); }
+function render() { renderSignals(filtered()); renderStats(); renderQuadrant(); renderTimeline(); renderDomain(); }
 
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
   document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
