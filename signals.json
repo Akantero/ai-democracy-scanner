@@ -1,0 +1,142 @@
+[
+  {
+    "source": "mit_tech",
+    "title": "Microsoft has a new plan to prove what’s real and what’s AI online",
+    "summary": "AI-enabled deception now permeates our online lives. There are the high-profile cases you may easily spot, like when White House officials recently shared a manipulated image of a protester in Minnesota and then mocked those asking about it. Other times, it slips quietly into social media feeds and racks up views, like the videos that&#8230;",
+    "url": "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-whats-ai-online/",
+    "published": "Thu, 19 Feb 2026 16:00:00 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "epistemic",
+    "confidence": 0.72,
+    "rationale": "Microsoft's initiative to develop provenance and authentication standards for digital content represents a direct institutional response to AI-enabled deception, attempting to restore epistemic integrity to the online information environment. By creating technical infrastructure to distinguish real from synthetic content, this reflects democratic institutions and major tech actors adapting to preserve the conditions necessary for informed public deliberation. The effort aligns with broader content provenance coalitions like C2PA, indicating this is not an isolated move.",
+    "secondary_rationale": "The WEAKENS dimension is present in the background: the news item documents that AI-enabled deception is already permeating public discourse — including manipulation by White House officials — meaning the epistemic environment is already being hollowed out faster than countermeasures can be deployed. The strengthening response exists precisely because the weakening trend is strong.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T10:51:52.544438"
+  },
+  {
+    "source": "guardian_tech",
+    "title": "Mind launches inquiry into AI and mental health after Guardian investigation",
+    "summary": "<p>Exclusive: England and Wales charity to examine safeguards after Guardian exposed ‘very dangerous’ advice on Google AI Overviews</p><ul><li><p><a href=\"https://www.theguardian.com/society/2026/feb/20/mind-mental-health-expert-google-ai-summaries#:~:text=Mental%20health-,'Very%20dangerous'%3A%20a%20Mind%20mental%20health,expert%20on%20Google's%20AI%20Overviews&amp;text=A%20year%2Dlong%20commission%20has,very%20dangerous%E2%80%9D%20mental%20health%20advice.\">‘Very dangerous’: a Mind mental health expert on Google’s AI summaries</a></p></li></ul><p>Mind is launching a significant inquiry into artificial intelligence and mental health after a Guardian investigation exposed how Google’s AI Overviews gave people “very dangerous” medical advice.</p><p>In a year-long commission, the mental heal",
+    "url": "https://www.theguardian.com/technology/2026/feb/20/mind-inquiry-google-ai-overviews-mental-health-guardian-investigation",
+    "published": "Fri, 20 Feb 2026 06:00:25 GMT",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "emerging",
+    "domain": "institutional",
+    "confidence": 0.62,
+    "rationale": "A civil society organization (Mind) is launching a formal inquiry into AI-generated health misinformation following investigative journalism exposure, representing a democratic accountability mechanism responding to documented AI harms. This pattern — civil society plus press triggering institutional scrutiny of AI systems — is a core 'STRENGTHENS' signal where existing oversight structures adapt to AI-related risks. The inquiry itself represents civic capacity mobilizing to govern AI's information environment.",
+    "secondary_rationale": "The underlying trigger — Google AI Overviews providing 'very dangerous' mental health advice at scale — points to WEAKENS dynamics, where commercial AI systems degrade the epistemic environment and public trust in health information, with potential chilling effects on people seeking help.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T10:52:25.488270"
+  },
+  {
+    "source": "guardian_tech",
+    "title": "US builds website that will allow Europeans to view blocked content",
+    "summary": "<p>Freedom.gov appears to be administered by a branch of the Department of Homeland Security</p><p>The US has built a portal that will allow Europeans to view blocked content including alleged hate speech and terrorism, according to <a href=\"https://www.reuters.com/world/us-plans-online-portal-bypass-content-bans-europe-elsewhere-2026-02-18/\">Reuters</a>.</p><p>The portal, “<a href=\"http://freedom.gov\">freedom.gov</a>”, will allow worldwide users to circumvent government controls on their content. The site features a graphic of a ghostly horse galloping above the Earth, and the motto: “Information is power. Reclaim your human right to free expression. Get ready.”</p> <a href=\"https://www.theguardian.com/technology/2026/feb/19/us-builds-website-that-will-allow-europeans-to-view-blocked-cont",
+    "url": "https://www.theguardian.com/technology/2026/feb/19/us-builds-website-that-will-allow-europeans-to-view-blocked-content",
+    "published": "Thu, 19 Feb 2026 19:15:27 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "emerging",
+    "domain": "multiple",
+    "confidence": 0.72,
+    "rationale": "The US government building infrastructure to deliberately circumvent European democratic content regulations — including hate speech and terrorism rules — represents a significant power play that undermines the legitimacy of democratically enacted EU law. Administered through DHS, this is not a neutral free-speech tool but a geopolitical instrument that concentrates US state power over the global information environment while hollowing out European regulatory sovereignty. This erodes democratic institutions' capacity to govern their own information ecosystems.",
+    "secondary_rationale": "The COLLAPSE dimension is relevant insofar as this represents a direct challenge to EU institutional legitimacy by a foreign state actor, potentially triggering a crisis in transatlantic regulatory relations. If normalized, this could mark a threshold moment where one democracy actively undermines another's democratic media governance.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T10:52:34.987555"
+  },
+  {
+    "source": "guardian_tech",
+    "title": "Digital blackface flourishes under Trump and AI: ‘The state is bending reality’",
+    "summary": "<p>From TikTok deepfakes to smears put out by the White House, fake videos modeled on Black archetypes are running rampant - putting Black users at risk</p><p>Late last year, as a US government shutdown cut off the Snap benefits that low-income families rely on for groceries, videos on social media cast the fallout in frantic scenes. “Imma keep it real with you,” a Black woman said in a viral TikTok post, “I get over $2,500 a month in stamps. I sell ’em, $2,000 worth, for about $1,200-$1,500 cash.” Another Black woman ranted about taxpayers’ responsibility to her seven children with seven men, and yet another melted down after her food stamps were rejected at a corn-dog counter.</p><p>Visible watermarks stamped some videos as AI-generated – apparently, too faintly for the racist commentato",
+    "url": "https://www.theguardian.com/technology/ng-interactive/2026/feb/19/ai-digital-blackface",
+    "published": "Thu, 19 Feb 2026 15:35:09 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "strong",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.87,
+    "rationale": "AI-generated deepfakes weaponizing racist archetypes to spread disinformation about Black communities represents a documented, systemic pattern of epistemic manipulation that narrows civic space and poisons the information environment. When state actors (White House) participate in or amplify such content, it represents a concentration of disinformation power that hollows out democratic deliberation while maintaining procedural facades. This specifically targets and suppresses the political voice of a historically marginalized group, compounding democratic harm.",
+    "secondary_rationale": "The state-level complicity edges toward COLLAPSE territory: when government institutions actively bend reality through AI-enabled racial disinformation, the legitimacy of democratic discourse faces acute rather than merely gradual erosion, potentially triggering crisis-level delegitimization of civic participation among affected communities.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T10:52:40.696307"
+  },
+  {
+    "source": "guardian_tech",
+    "title": "Tech firms must remove ‘revenge porn’ in 48 hours or risk being blocked, says Starmer",
+    "summary": "<p>PM says measure, also applied to deepfake nudes, is needed owing to a ‘national emergency’ of online misogyny</p><p>Deepfake nudes and “revenge porn” must be removed from the internet within 48 hours or technology firms risk being blocked in the UK, Keir Starmer has said, calling it a “national emergency” that the government must confront.</p><p>Companies could be fined millions or even blocked altogether if they allow the images to spread or be reposted after victims give notice.</p> <a href=\"https://www.theguardian.com/society/2026/feb/18/tech-firms-must-remove-revenge-porn-in-48-hours-or-risk-being-blocked-says-starmer\">Continue reading...</a>",
+    "url": "https://www.theguardian.com/society/2026/feb/18/tech-firms-must-remove-revenge-porn-in-48-hours-or-risk-being-blocked-says-starmer",
+    "published": "Wed, 18 Feb 2026 22:30:46 GMT",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.65,
+    "rationale": "The UK government is asserting regulatory authority over AI-generated non-consensual intimate imagery (deepfakes), framing it as a public emergency requiring platform accountability. This represents democratic institutions adapting to AI-enabled harms by extending rule-of-law mechanisms — mandatory takedowns, fines, blocking — into the AI content domain, strengthening civic protection norms.",
+    "secondary_rationale": "There is a WEAKENS dimension in that the blocking power granted to government over platforms creates infrastructure for broader content suppression, and the 48-hour compliance window may pressure platforms toward over-removal, narrowing speech space in ways that could be misused.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T10:52:46.122543"
+  },
+  {
+    "source": "guardian_tech",
+    "title": "How the anxiety over AI could fuel a new workers’ movement",
+    "summary": "<p>New technology has workers spooked, but experts say it’s creating an opening for a resurgence in worker power</p><p>In 2026, it’s a scary time to work for a living.</p><p>Gone are the days of quiet quitting, the Great Resignation, and the highly visible union-organizing battles that began the decade and signaled that <a href=\"https://www.vox.com/recode/22841490/work-remote-wages-labor-force-participation-great-resignation-unions-quits\">perhaps worker power was on the rise</a> again in the US. Instead, much of that momentum is being crowded out of our minds by anxieties: a worsening affordability crisis, geopolitical instability and the specter of artificial intelligence looming over the workplace.</p> <a href=\"https://www.theguardian.com/technology/ng-interactive/2026/feb/19/ai-work-fut",
+    "url": "https://www.theguardian.com/technology/ng-interactive/2026/feb/19/ai-work-future",
+    "published": "Thu, 19 Feb 2026 13:00:12 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "NEW_DEMOCRACY"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "power",
+    "confidence": 0.62,
+    "rationale": "AI-driven workplace anxiety is displacing earlier labor organizing momentum, concentrating economic power and eroding workers' collective bargaining capacity — a form of democratic weakening in the economic sphere where labor voice has historically been a counterweight to capital. The crowding out of union-organizing energy by AI-induced precarity represents a gradual hollowing of civic and economic participation.",
+    "secondary_rationale": "The article also signals an opening for new forms of worker solidarity and collective action catalyzed by AI anxiety, which could represent emergent participatory democratic formations outside traditional institutional channels.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T10:52:50.698557"
+  },
+  {
+    "source": "guardian_tech",
+    "title": "Macron defends EU AI rules and vows crackdown on child ‘digital abuse’",
+    "summary": "<p>French president rejects US criticism as António Guterres and Narendra Modi warn on child safety and AI monopolies</p><ul><li><p><a href=\"https://www.theguardian.com/business/live/2026/feb/19/british-gas-centrica-profit-gen-z-trades-ai-ftse-sterling-pound-stocks-business-live-news\">Business live – latest updates</a></p></li><li><p><a href=\"https://www.theguardian.com/world/live/2026/feb/19/ukraine-russia-zelenskyy-putin-peace-talks-deal-donald-trump-europe-latest-news-updates\">Europe live – latest updates</a></p></li></ul><p>Emmanuel Macron has hit back at US criticism of Europe’s efforts to regulate AI, vowing to protect children from “digital abuse” during France’s presidency of the G7.</p><p>Speaking at the AI Impact summit in Delhi, the French president called for tougher safeguards",
+    "url": "https://www.theguardian.com/technology/2026/feb/19/emmanuel-macron-eu-ai-rules-child-safety-digital-abuse",
+    "published": "Thu, 19 Feb 2026 08:26:23 GMT",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.72,
+    "rationale": "Macron's defense of EU AI regulation and push for child safety safeguards represents democratic institutions actively asserting regulatory sovereignty over AI, reinforcing rule of law and protective governance frameworks. The G7 multilateral context signals coordinated institutional adaptation to AI risks rather than passive erosion, aligning with the STRENGTHENS scenario where existing democratic structures adapt and maintain legitimacy.",
+    "secondary_rationale": "The WEAKENS dimension is present in the background: US pressure against EU regulation and warnings about AI monopolies from Guterres and Modi signal ongoing power concentration dynamics that these regulatory efforts are partly a defensive response to — suggesting the democratic strengthening is itself a reaction to weakening pressures.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T10:52:56.528148"
+  }
+]
