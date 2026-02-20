@@ -23,26 +23,61 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 # Add or remove feeds freely. Format: "name": "rss_url"
 
 RSS_FEEDS = {
-    # Finnish sources
-    "yle_uutiset":   "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET",
-    "yle_tekno":     "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-34837",
 
-    # European / global sources
-    "politico_eu":   "https://www.politico.eu/feed/",
-    "reuters_tech":  "https://feeds.reuters.com/reuters/technologyNews",
-    "euractiv":      "https://www.euractiv.com/sections/digital/feed/",
+    # ── FINNISH SOURCES ───────────────────────────────────────────────────────
+    "yle_uutiset":      "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET",
+    "yle_tekno":        "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-34837",
+    "yle_politiikka":   "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-38033",
+    "hs_paakirj":       "https://www.hs.fi/rss/paakirjoitukset.xml",
+    "mtv_uutiset":      "https://www.mtvuutiset.fi/rss/uutiset.rss",
 
-    # AI-specific
-    "mit_tech":      "https://www.technologyreview.com/feed/",
-    "wired_ai":      "https://www.wired.com/feed/tag/artificial-intelligence/latest/rss",
+    # ── FINNISH GOVERNMENT & INSTITUTIONS ─────────────────────────────────────
+    "valtioneuvosto":   "https://valtioneuvosto.fi/rss/tiedotteet.rss",
+    "eduskunta":        "https://www.eduskunta.fi/FI/tiedotteet/Sivut/RSS.aspx",
+    "oikeusministerio": "https://oikeusministerio.fi/rss/tiedotteet.rss",
+    "traficom":         "https://www.traficom.fi/fi/rss/uutiset",
 
-    # Broader democratic health signals
-    "guardian_tech": "https://www.theguardian.com/technology/rss",
-    "gdelt":         "https://api.gdeltproject.org/api/v2/doc/doc?query=AI+democracy&mode=artlist&format=rss",
+    # ── EU POLICY & GOVERNANCE ────────────────────────────────────────────────
+    "politico_eu":      "https://www.politico.eu/feed/",
+    "euractiv_digital": "https://www.euractiv.com/sections/digital/feed/",
+    "euractiv_ai":      "https://www.euractiv.com/sections/digital/artificial-intelligence/feed/",
+    "eu_commission":    "https://ec.europa.eu/newsroom/dae/rss.cfm",
+    "europarl":         "https://www.europarl.europa.eu/rss/doc/top-stories/en.xml",
+    "edri":             "https://edri.org/feed/",           # European digital rights NGO
+
+    # ── GLOBAL NEWS ───────────────────────────────────────────────────────────
+    "reuters_tech":     "https://feeds.reuters.com/reuters/technologyNews",
+    "guardian_tech":    "https://www.theguardian.com/technology/rss",
+    "guardian_media":   "https://www.theguardian.com/media/rss",
+    "bbc_tech":         "https://feeds.bbci.co.uk/news/technology/rss.xml",
+    "ap_tech":          "https://feeds.apnews.com/rss/apf-technology",
+
+    # ── AI-SPECIFIC ───────────────────────────────────────────────────────────
+    "mit_tech":         "https://www.technologyreview.com/feed/",
+    "wired_ai":         "https://www.wired.com/feed/tag/artificial-intelligence/latest/rss",
+    "aisnakeoil":       "https://www.aisnakeoil.com/feed",  # AI policy critique
+    "import_ai":        "https://importai.substack.com/feed",
+
+    # ── DEMOCRACY & GOVERNANCE RESEARCH ──────────────────────────────────────
+    "freedom_house":    "https://freedomhouse.org/rss.xml",
+    "v_dem":            "https://www.v-dem.net/feed/",      # Varieties of Democracy institute
+    "carnegie_dem":     "https://carnegieendowment.org/topics/democracy/rss",
+    "brookings_gov":    "https://www.brookings.edu/topic/governance-studies/feed/",
+    "oxpol":            "https://blog.politics.ox.ac.uk/feed/",  # Oxford Politics blog
+
+    # ── DISINFORMATION & INFORMATION ENVIRONMENT ──────────────────────────────
+    "euvsdisinfo":      "https://euvsdisinfo.eu/feed/",     # EU East StratCom task force
+    "firstdraft":       "https://firstdraftnews.org/feed/",
+    "poynter":          "https://www.poynter.org/feed/",
+
+    # ── GDELT TARGETED QUERIES ────────────────────────────────────────────────
+    "gdelt_ai_dem":     "https://api.gdeltproject.org/api/v2/doc/doc?query=AI+democracy&mode=artlist&format=rss",
+    "gdelt_ai_elect":   "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence+elections&mode=artlist&format=rss",
+    "gdelt_disinfo":    "https://api.gdeltproject.org/api/v2/doc/doc?query=disinformation+AI+politics&mode=artlist&format=rss",
 }
 
 # ── SETTINGS ──────────────────────────────────────────────────────────────────
-ARTICLES_PER_FEED   = 10   # how many articles to pull per feed per run
+ARTICLES_PER_FEED   = 20   # how many articles to pull per feed per run
 OUTPUT_FILE         = "signals.json"
 MODEL               = "claude-sonnet-4-6"
 MAX_TOKENS          = 600
