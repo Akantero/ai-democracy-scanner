@@ -138,5 +138,703 @@
     "secondary_rationale": "The WEAKENS dimension is present in the background: US pressure against EU regulation and warnings about AI monopolies from Guterres and Modi signal ongoing power concentration dynamics that these regulatory efforts are partly a defensive response to — suggesting the democratic strengthening is itself a reaction to weakening pressures.",
     "finnish_relevance": true,
     "scanned_at": "2026-02-20T10:52:56.528148"
+  },
+  {
+    "source": "edri",
+    "title": "Czech ministry apologizes to journalist for blanket collection of mobile phone data",
+    "summary": "<p>The Czech Supreme Court has ruled that the legal regulation of blanket collection of electronic communications data (known as data retention) violates European Union law in a \"long-term and particularly serious manner.\" This decision is the result of a multi-year campaign by the organization IuRe. However, the responsible minister  has not yet taken steps to end blanket collection.</p>\n<p>The post <a href=\"https://edri.org/our-work/czech-ministry-apologizes-to-journalist-for-blanket-collection-of-mobile-phone-data/\">Czech ministry apologizes to journalist for blanket collection of mobile phone data</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/czech-ministry-apologizes-to-journalist-for-blanket-collection-of-mobile-phone-data/",
+    "published": "Wed, 18 Feb 2026 08:30:55 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "reversing",
+    "domain": "institutional",
+    "confidence": 0.65,
+    "rationale": "The Czech Supreme Court ruling against blanket data retention as violating EU law represents the rule of law and civil society advocacy successfully constraining state surveillance overreach — a democratic institution reasserting rights protections. The multi-year IuRe campaign illustrates civic capacity to hold government accountable through legal channels, reinforcing democratic oversight mechanisms.",
+    "secondary_rationale": "The WEAKENS dimension remains active because the responsible minister has not yet acted on the ruling, indicating that surveillance infrastructure continues to operate in acknowledged violation of rights — a pattern of technocratic or bureaucratic inertia that hollows out formal legal protections.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:16:57.867532"
+  },
+  {
+    "source": "edri",
+    "title": "Europe’s digital sovereignty starts with open source",
+    "summary": "<p>EDRi submitted a response to the EU’s new open source digital strategy. We argue that free and open source software is not a niche technical choice, but a strategic foundation for Europe’s resilience, competitiveness and democratic autonomy.</p>\n<p>The post <a href=\"https://edri.org/our-work/europes-digital-sovereignty-starts-with-open-source/\">Europe’s digital sovereignty starts with open source</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/europes-digital-sovereignty-starts-with-open-source/",
+    "published": "Wed, 18 Feb 2026 08:30:44 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "NEW_DEMOCRACY"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.72,
+    "rationale": "EDRi's advocacy for open source as the foundation of Europe's digital sovereignty represents a push to embed democratic accountability into AI and software infrastructure at the institutional level. By framing open source as essential to resilience and democratic autonomy rather than a technical preference, the argument seeks to strengthen existing EU governance structures against dependency on proprietary, opaque systems controlled by concentrated private power.",
+    "secondary_rationale": "There is a NEW_DEMOCRACY dimension here: open source infrastructure as a commons-based model could enable genuinely new forms of public control over digital governance, moving beyond traditional regulatory oversight toward participatory co-ownership of critical digital systems.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:02.544776"
+  },
+  {
+    "source": "edri",
+    "title": "US pressure on the Digital Services Act in the Netherlands",
+    "summary": "<p>On 3 February 2026, the United States House Committee on the Judiciary launched a report in which EDRi member Bits of Freedom and Justice for Prosperity, among others, are called \"censorous NGOs\". In response, Bits of Freedom and Justice for Prosperity are issuing the following statement.</p>\n<p>The post <a href=\"https://edri.org/our-work/us-pressure-on-the-digital-services-act-in-the-netherlands/\">US pressure on the Digital Services Act in the Netherlands</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/us-pressure-on-the-digital-services-act-in-the-netherlands/",
+    "published": "Wed, 18 Feb 2026 08:30:33 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.75,
+    "rationale": "The US Congress labeling European digital rights NGOs as 'censorous' represents geopolitical pressure on democratic regulatory infrastructure — specifically the DSA, which is a key institutional mechanism for governing platform power and the information environment. This US pressure seeks to delegitimize civil society actors and potentially undermine European sovereignty over platform regulation, hollowing out democratic oversight of tech platforms.",
+    "secondary_rationale": "The COLLAPSE dimension is relevant because this signals a potential breakdown in transatlantic democratic norm-alignment around platform governance, with one democratic government actively undermining another's regulatory institutions and the civil society organizations supporting them.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:09.813468"
+  },
+  {
+    "source": "edri",
+    "title": "Ensuring human rights-based, global perspectives in the DSA enforcement: the DSA Human Rights Alliance’s guidelines",
+    "summary": "<p>The DSA Human Rights Alliance has released 'Principles for a Human Rights-Centred Application of the Digital Services Act: A Global Perspective' to guide the European Commission, national policymakers, and regulators as the DSA moves from legislation to enforcement. The recommendations focus on the cross-border effects of DSA enforcement, empowering diverse groups to enforce users’ rights and providing input during enforcement actions. This will ensure that the law is applied in a way that respects international human rights standards and reflects regional perspectives.</p>\n<p>The post <a href=\"https://edri.org/our-work/ensuring-human-rights-based-global-perspectives-in-the-dsa-enforcement-the-dsa-human-rights-alliances-guidelines/\">Ensuring human rights-based, global perspectives in th",
+    "url": "https://edri.org/our-work/ensuring-human-rights-based-global-perspectives-in-the-dsa-enforcement-the-dsa-human-rights-alliances-guidelines/",
+    "published": "Wed, 18 Feb 2026 08:30:24 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "NEW_DEMOCRACY"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.72,
+    "rationale": "The DSA Human Rights Alliance's guidelines represent civil society actors working to shape AI and platform governance through human rights frameworks, reinforcing rule-of-law approaches to regulating digital services. By embedding international human rights standards into DSA enforcement, the initiative strengthens democratic accountability over powerful platforms. This reflects a broader trend of civic capacity-building around algorithmic governance at the regulatory level.",
+    "secondary_rationale": "The emphasis on cross-border perspectives and empowering diverse groups to participate in enforcement also gestures toward NEW_DEMOCRACY territory — creating novel participatory mechanisms in supranational regulatory processes that go beyond traditional representative structures.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:15.025945"
+  },
+  {
+    "source": "edri",
+    "title": "How recommender algorithms threaten election integrity",
+    "summary": "<p>A study published by EDRi member Asociația pentru Tehnologie și Internet (ApTI) Romania analysed how the recommender algorithms on Facebook, Instagram and TikTok distributed political content, during the 2025 presidential election. The quantitative analysis identified cases in which these social media platforms did not comply with either national electoral laws, nor with EU Regulations, such as the Digital Service Act (DSA).</p>\n<p>The post <a href=\"https://edri.org/our-work/how-recommender-algorithms-threaten-election-integrity/\">How recommender algorithms threaten election integrity</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/how-recommender-algorithms-threaten-election-integrity/",
+    "published": "Wed, 18 Feb 2026 08:30:18 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.82,
+    "rationale": "Recommender algorithms on major platforms distributed political content in ways that violated both national electoral law and EU regulations (DSA) during Romania's 2025 presidential election, representing a documented case of algorithmic systems hollowing out democratic procedures while maintaining a facade of open platforms. This is a classic WEAKENS pattern: private platform logic overriding democratic safeguards, concentrating influence over political discourse without accountability. The non-compliance with DSA is especially significant as it undermines the regulatory architecture meant to protect elections.",
+    "secondary_rationale": "There is a secondary COLLAPSE dimension given Romania's specific electoral context — the 2024–2025 Romanian presidential election cycle was already marked by institutional crisis and allegations of algorithmic manipulation, meaning this study adds to documented evidence of near-crisis-level democratic legitimacy challenges in an EU member state.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:21.376297"
+  },
+  {
+    "source": "edri",
+    "title": "European Commission’s plans will lead to worse regulations",
+    "summary": "<p>EDRi is deeply concerned that the European Commission’s current plans to amend the Better Regulation framework will lead to worse lawmaking, not better. In its submission to the Commission, EDRi shares recommendations to ensure balanced representation, fairness, transparency, and meaningful safeguards in EU lawmaking.</p>\n<p>The post <a href=\"https://edri.org/our-work/european-commissions-plans-will-lead-to-worse-regulations/\">European Commission’s plans will lead to worse regulations</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/european-commissions-plans-will-lead-to-worse-regulations/",
+    "published": "Wed, 18 Feb 2026 08:30:07 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "emerging",
+    "domain": "institutional",
+    "confidence": 0.55,
+    "rationale": "EDRi's concerns about the European Commission's Better Regulation reforms signal a weakening of democratic lawmaking quality — if the changes reduce balanced stakeholder representation, transparency, and civil society input, they risk tilting EU regulatory processes toward corporate or technocratic influence, particularly relevant as AI regulation is a core EU policy domain. The framing suggests procedural changes could structurally disadvantage public interest voices in shaping AI and digital governance rules. This represents a gradual hollowing out of democratic deliberation within formal EU institutions.",
+    "secondary_rationale": "The STRENGTHENS dimension is present in EDRi's own advocacy: civil society submitting formal recommendations and demanding transparency represents democratic civic capacity functioning, potentially contributing to corrective pressure on the Commission.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:27.777068"
+  },
+  {
+    "source": "edri",
+    "title": "Information Integrity & Wikipedia: How community-governed platforms can inform future policy-making.",
+    "summary": "<p>The event will give the opportunity to the researchers, the University of Amsterdam and Eurecat – Centre Tecnològic de Catalunya, to showcase the results of their analyses, presenting the policy options that can inform future policy-making.</p>\n<p>The post <a href=\"https://edri.org/take-action/events/information-integrity-wikipedia-how-community-governed-platforms-can-inform-future-policy-making/\">Information Integrity &#038; Wikipedia: How community-governed platforms can inform future policy-making.</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/take-action/events/information-integrity-wikipedia-how-community-governed-platforms-can-inform-future-policy-making/",
+    "published": "Wed, 11 Feb 2026 15:28:05 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "NEW_DEMOCRACY"
+    ],
+    "signal_strength": "weak",
+    "signal_type": "emerging",
+    "domain": "multiple",
+    "confidence": 0.55,
+    "rationale": "This event showcases research on community-governed platforms like Wikipedia as models for information integrity, with the aim of informing policy-making. This aligns with STRENGTHENS in that existing civic and institutional actors (researchers, EDRi, policymakers) are leveraging community-governed digital infrastructure to reinforce the information environment and democratic oversight of platforms. The focus on translating findings into policy options reflects an adaptive, institution-building response to information integrity challenges.",
+    "secondary_rationale": "There is a secondary NEW_DEMOCRACY resonance: Wikipedia's community governance model represents a non-state, participatory form of epistemic legitimacy that could inspire genuinely new democratic or regulatory architectures beyond existing top-down institutional frameworks.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:17:33.544774"
+  },
+  {
+    "source": "edri",
+    "title": "Against Technosolutionism: Governing Platforms as Systems of Care",
+    "summary": "<p>Why do our digital systems break people? Conversational AI tools like Grok or ChatGPT are promoted as a means to democratize knowledge and expand access to information. In practice, however, they have also made sexual harassment easier, reproduced harmful stereotypes, and, in some cases, encouraged people to self-harm rather than helping them. These outcomes are not rare glitches. They reveal how conversational AI and social media platforms are built, governed, and deployed at scale.</p>\n<p>The post <a href=\"https://edri.org/take-action/events/against-technosolutionism-governing-platforms-as-systems-of-care/\">Against Technosolutionism: Governing Platforms as Systems of Care</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/take-action/events/against-technosolutionism-governing-platforms-as-systems-of-care/",
+    "published": "Wed, 11 Feb 2026 15:22:35 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.72,
+    "rationale": "The piece documents how AI platforms systematically harm users through harassment facilitation, stereotype reproduction, and self-harm encouragement — outcomes framed not as bugs but as structural features of how these systems are built and governed. This represents a gradual narrowing of civic and epistemic safety, particularly for marginalized groups, eroding the democratic promise of equal access to information while concentrating harm on vulnerable populations. The critique of technosolutionism directly challenges the legitimacy of dominant AI governance paradigms.",
+    "secondary_rationale": "The advocacy framing — calling for platforms to be governed as 'systems of care' — gestures toward a STRENGTHENS trajectory if civil society organizations like EDRi succeed in influencing regulatory frameworks such as the EU Digital Services Act, embedding harm-reduction principles into platform accountability.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:39.710205"
+  },
+  {
+    "source": "edri",
+    "title": "Science Cafe: Why the current internet sucks",
+    "summary": "<p>Media scholars Lucie Chateau and Michael Stevenson, and legal scholar Catalina Goanta on how Big Tech killed the internet.</p>\n<p>The post <a href=\"https://edri.org/take-action/events/science-cafe-why-the-current-internet-sucks/\">Science Cafe: Why the current internet sucks</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/take-action/events/science-cafe-why-the-current-internet-sucks/",
+    "published": "Wed, 11 Feb 2026 15:13:33 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "weak",
+    "signal_type": "plateauing",
+    "domain": "epistemic",
+    "confidence": 0.45,
+    "rationale": "This EDRi-hosted Science Cafe event features scholars examining how Big Tech has degraded the internet, implicitly addressing how platform concentration has hollowed out the open information environment that democratic participation depends on. The framing — 'Big Tech killed the internet' — resonates with the WEAKENS scenario of platform monopolization of political discourse and epistemic commons. However, the item itself is only an event announcement with minimal substantive content.",
+    "secondary_rationale": "The involvement of a digital rights organization like EDRi signals civic pushback and capacity-building, which lightly touches the STRENGTHENS scenario of civil society strengthening oversight of technology platforms.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:17:47.635125"
+  },
+  {
+    "source": "edri",
+    "title": "Global Gathering 2026",
+    "summary": "<p>The Global Gathering brings together groups from around the world working on the most urgent technology-related challenges affecting human rights, social justice, civil society, and journalism at the local, regional and global levels. </p>\n<p>The post <a href=\"https://edri.org/take-action/events/global-gathering-2026/\">Global Gathering 2026</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/take-action/events/global-gathering-2026/",
+    "published": "Wed, 11 Feb 2026 15:04:30 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "NEW_DEMOCRACY"
+    ],
+    "signal_strength": "weak",
+    "signal_type": "emerging",
+    "domain": "participatory",
+    "confidence": 0.45,
+    "rationale": "The Global Gathering 2026 represents civil society capacity-building around technology's impact on human rights and democracy, which aligns with strengthening democratic oversight and civic engagement with AI governance. EDRi is a well-established digital rights organization whose convening work supports institutional resilience against technology-driven threats to democratic life. However, the news item is an event announcement with minimal substantive detail about AI-specific democratic impacts.",
+    "secondary_rationale": "The transnational civil society coordination model — bringing together local, regional, and global groups — hints at emerging post-institutional forms of democratic accountability that could qualify as NEW_DEMOCRACY, though evidence is too thin to elevate this reading.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:17:52.859461"
+  },
+  {
+    "source": "edri",
+    "title": "Conference Digital Commons: Infrastructures, Design, and the Ethics of Autonomy",
+    "summary": "<p>Digital Commons: Infrastructures, Design, and the Ethics of Autonomy is an international conference exploring how digital infrastructures shape contemporary life, and how communities, researchers, and technologists imagine and build alternatives.</p>\n<p>The post <a href=\"https://edri.org/take-action/events/conference-digital-commons-infrastructures-design-and-the-ethics-of-autonomy/\">Conference Digital Commons: Infrastructures, Design, and the Ethics of Autonomy</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/take-action/events/conference-digital-commons-infrastructures-design-and-the-ethics-of-autonomy/",
+    "published": "Wed, 11 Feb 2026 15:00:00 +0000",
+    "relevant": true,
+    "primary_category": "NEW_DEMOCRACY",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "weak",
+    "signal_type": "emerging",
+    "domain": "multiple",
+    "confidence": 0.45,
+    "rationale": "This conference signal points toward the emergence of alternative digital infrastructures governed as commons, which resonates with NEW_DEMOCRACY insofar as it explores post-corporate, community-governed models of digital life that could underpin new forms of collective decision-making and civic autonomy. The focus on 'ethics of autonomy' and community-built alternatives suggests an active effort to imagine governance structures not reducible to existing institutional frameworks. However, as a conference announcement rather than a documented initiative, the signal is early and weak.",
+    "secondary_rationale": "The STRENGTHENS dimension is present in that civil society actors like EDRi engaging in deliberate, principled design of digital infrastructure can reinforce democratic capacity and rights-based norms within existing institutional contexts.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:17:58.776615"
+  },
+  {
+    "source": "edri",
+    "title": "Reopening GDPR and ePrivacy through the Digital Omnibus: a risky path for EU digital rights",
+    "summary": "<p>EDRi has assessed the Digital Omnibus proposals affecting the General Data Protection Regulation (GDPR) and the ePrivacy framework. While presented as simplification, the changes amount to deregulation in effect, weakening fundamental rights safeguards, increasing legal uncertainty, and advancing through a process that falls short of democratic lawmaking standards.</p>\n<p>The post <a href=\"https://edri.org/our-work/reopening-gdpr-and-eprivacy-through-the-digital-omnibus-a-risky-path-for-eu-digital-rights/\">Reopening GDPR and ePrivacy through the Digital Omnibus: a risky path for EU digital rights</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/reopening-gdpr-and-eprivacy-through-the-digital-omnibus-a-risky-path-for-eu-digital-rights/",
+    "published": "Wed, 11 Feb 2026 12:56:47 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.78,
+    "rationale": "The Digital Omnibus proposals, framed as administrative simplification, effectively roll back GDPR and ePrivacy protections in ways that weaken fundamental rights safeguards governing data-driven systems including AI. EDRi's assessment that the process itself falls short of democratic lawmaking standards suggests procedural legitimacy is being bypassed, compounding the substantive deregulation. This is a textbook pattern of hollowing out democratic protections while maintaining institutional facades.",
+    "secondary_rationale": "The accelerated or opaque legislative process described could represent an early indicator of a more acute legitimacy breakdown (COLLAPSE-adjacent), particularly if civil society challenges mount and the EU's digital rights framework loses credibility as a global standard.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:04.110458"
+  },
+  {
+    "source": "edri",
+    "title": "AI Omnibus: Reject the proposals to undermine transparency in the AI Act",
+    "summary": "<p>The European Commission’s dangerous and misguided Digital Omnibus proposal includes a dangerous rollback of transparency requirements in the AI Act. 60 civil society organisations, independent public authorities and individuals,  including EDRi, urge EU lawmakers to reject a change that would risk weakening enforcement, legal certainty, and the protection of fundamental rights, while offering negligible benefits for companies.</p>\n<p>The post <a href=\"https://edri.org/our-work/ai-omnibus-reject-the-proposals-to-undermine-transparency-in-the-ai-act/\">AI Omnibus: Reject the proposals to undermine transparency in the AI Act</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/ai-omnibus-reject-the-proposals-to-undermine-transparency-in-the-ai-act/",
+    "published": "Wed, 11 Feb 2026 09:30:02 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.82,
+    "rationale": "The European Commission's Digital Omnibus proposal to roll back AI Act transparency requirements represents a weakening of regulatory oversight infrastructure, reducing enforcement capacity and legal certainty around AI systems. This hollows out democratic accountability mechanisms while maintaining the appearance of existing regulatory frameworks, a classic pattern of democratic erosion through regulatory capture or technocratic retreat.",
+    "secondary_rationale": "The coordinated civil society response — 60 organisations resisting the rollback — represents a STRENGTHENS signal, demonstrating that civic institutions and democratic watchdogs are actively contesting power concentration and fighting to preserve transparency norms.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:08.484301"
+  },
+  {
+    "source": "edri",
+    "title": "EDRi urged the Council to demand a proper scrutiny of the Digital Omnibus proposal",
+    "summary": "<p>The Digital Omnibus proposal fails to comply with the Charter of Fundamental Rights and Better Regulation rules, EDRi urged the Council to send the proposal back to the Commission for proper scrutiny and comprehensive assessments.</p>\n<p>The post <a href=\"https://edri.org/our-work/edri-urges-the-council-to-demand-a-proper-scrutiny-of-the-digital-omnibus-proposal/\">EDRi urged the Council to demand a proper scrutiny of the Digital Omnibus proposal</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/edri-urges-the-council-to-demand-a-proper-scrutiny-of-the-digital-omnibus-proposal/",
+    "published": "Tue, 10 Feb 2026 11:08:22 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.65,
+    "rationale": "EDRi's critique suggests the Digital Omnibus proposal is being rushed through without adequate fundamental rights scrutiny or impact assessments, which represents a pattern of technocratic acceleration that bypasses deliberative democratic safeguards. When digital regulation packages fail to comply with the Charter of Fundamental Rights, it risks weakening the rule-of-law foundations that protect civic and democratic rights in the digital sphere. This procedural shortcutting, even if unintentional, hollows out the democratic legitimacy of digital governance frameworks.",
+    "secondary_rationale": "EDRi's advocacy role itself represents a STRENGTHENS signal — civil society organizations using institutional channels (urging the Council to demand scrutiny) to enforce democratic accountability norms and better regulation principles, demonstrating that oversight mechanisms remain engaged and functional.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:13.948385"
+  },
+  {
+    "source": "edri",
+    "title": "EDRi welcomes EU preliminary findings on TikTok’s addictive platform design",
+    "summary": "<p>The European Commission preliminarily found that TikTok was in breach of the Digital Services Act (DSA) due to the addictive design of its platform. EDRi welcomes this decision and urges TikTok to swiftly mitigate the risks to which its users are exposed.</p>\n<p>The post <a href=\"https://edri.org/our-work/edri-welcomes-eu-preliminary-findings-on-tiktoks-addictive-platform-design/\">EDRi welcomes EU preliminary findings on TikTok’s addictive platform design</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/edri-welcomes-eu-preliminary-findings-on-tiktoks-addictive-platform-design/",
+    "published": "Mon, 09 Feb 2026 14:11:39 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.75,
+    "rationale": "The EU's DSA enforcement action against TikTok's algorithmically-driven addictive design represents democratic institutions actively asserting regulatory authority over platform AI systems that manipulate user behavior. This is a meaningful case of rule-of-law mechanisms adapting to constrain AI-enabled harms, with civil society (EDRi) playing a watchdog role that reinforces institutional legitimacy.",
+    "secondary_rationale": "The WEAKENS dimension is present in the background: the very conduct being investigated—algorithmic addiction design—illustrates how recommendation AI can hollow out autonomous civic and epistemic agency, narrowing the quality of democratic participation even if the regulatory response is a strengthening signal.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:19.809681"
+  },
+  {
+    "source": "edri",
+    "title": "Statement of solidarity with EDRi members and allies facing pressure for their work on platform regulation",
+    "summary": "<p>The EDRi network strongly condemns the pressure of the US Trump administration on EDRi members and allies for our work on online platform regulation. </p>\n<p>The post <a href=\"https://edri.org/our-work/statement-of-solidarity-with-edri-members-and-allies-facing-pressure-for-their-work-on-platform-regulation/\">Statement of solidarity with EDRi members and allies facing pressure for their work on platform regulation</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/statement-of-solidarity-with-edri-members-and-allies-facing-pressure-for-their-work-on-platform-regulation/",
+    "published": "Fri, 06 Feb 2026 11:41:45 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.72,
+    "rationale": "The US Trump administration applying pressure on European digital rights organizations working on platform regulation represents a transnational power play that undermines civic society's capacity to regulate AI-enabled platforms. This chilling effect on regulatory advocates erodes the institutional scaffolding that democratic societies depend on to govern Big Tech, hollowing out oversight capacity while maintaining formal democratic facades. The geopolitical weaponization of platform governance debates signals a broader effort to concentrate power in the hands of platform oligarchs by suppressing regulatory civil society.",
+    "secondary_rationale": "The COLLAPSE dimension is relevant insofar as external governmental pressure on allied nations' civil society organizations represents a potential acute rupture in the norms of democratic sovereignty and transnational regulatory cooperation, not merely gradual erosion.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:25.068535"
+  },
+  {
+    "source": "edri",
+    "title": "EDRi-gram, 4 February 2026",
+    "summary": "<p>What has the EDRi network been up to over the past few weeks? Find out the latest digital rights news in our bi-weekly newsletter. In this edition: borders, biometrics, billionaires and bots</p>\n<p>The post <a href=\"https://edri.org/our-work/edri-gram-4-february-2026/\">EDRi-gram, 4 February 2026</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/edri-gram-4-february-2026/",
+    "published": "Wed, 04 Feb 2026 10:45:52 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.45,
+    "rationale": "The EDRi newsletter's thematic framing — borders, biometrics, billionaires, and bots — signals ongoing civil society monitoring of AI-enabled surveillance, concentration of tech power, and automated threats to democratic norms. EDRi's consistent documentation of digital rights erosion in Europe situates this as part of a recurring pattern of AI and digital tools being used in ways that narrow civic space, enable border surveillance overreach, and concentrate power among tech elites.",
+    "secondary_rationale": "EDRi's advocacy work itself represents a STRENGTHENS dynamic: organized civil society pushing back through institutional channels, regulatory engagement, and public accountability — reinforcing democratic oversight of technology. However, the summary is too sparse to classify with high confidence.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:31.074842"
+  },
+  {
+    "source": "edri",
+    "title": "Open Letter: Civil society concerned about extensive and indiscriminate data retention regime in Switzerland",
+    "summary": "<p>19 civil society organisations have penned a letter to the Swiss Federal Department of Justice and Police (FDJP) to express serious concerns about their plans to extend the Swiss Data Retention regime. They call on the Federal Councilor to align Swiss legislation with the highest standards of protection for people’s privacy.</p>\n<p>The post <a href=\"https://edri.org/our-work/open-letter-civil-society-concerned-about-extensive-and-indiscriminate-data-retention-regime-in-switzerland/\">Open Letter: Civil society concerned about extensive and indiscriminate data retention regime in Switzerland</a> appeared first on <a href=\"https://edri.org\">European Digital Rights (EDRi)</a>.</p>",
+    "url": "https://edri.org/our-work/open-letter-civil-society-concerned-about-extensive-and-indiscriminate-data-retention-regime-in-switzerland/",
+    "published": "Wed, 04 Feb 2026 08:30:39 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.65,
+    "rationale": "Expansive indiscriminate data retention regimes erode civil liberties and enable surveillance infrastructure that can chill political participation and concentrate power in state hands, gradually hollowing out the privacy rights that underpin democratic life. The Swiss government's plans represent a systemic pattern of surveillance creep that weakens civic space even when framed in terms of public safety.",
+    "secondary_rationale": "The civil society mobilization itself is a STRENGTHENS signal — 19 organizations coordinating to hold government accountable through formal channels exemplifies democratic oversight functioning as intended, pushing back against erosion of privacy rights.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:18:35.752929"
+  },
+  {
+    "source": "guardian_media",
+    "title": "What social media restrictions has Keir Starmer announced?",
+    "summary": "<p>Before consultation on under-16s ban, government to crack down on AI chatbots and get powers to act more quickly</p><p></p><p>Keir Starmer has not yet given his full backing to a social media ban for under-16s. But on Monday the prime minister announced <a href=\"https://www.theguardian.com/technology/2026/feb/15/ai-chatbots-children-risk-fines-uk-ban\">a series of measures</a> to restrict the harms ministers believe online platforms are causing to children who use them.</p><p>“As a dad of two teenagers, I know the challenges and the worries that parents face making sure their kids are safe online,” the prime minister said in a statement.</p> <a href=\"https://www.theguardian.com/media/2026/feb/16/social-media-restrictions-keir-starmer-announced\">Continue reading...</a>",
+    "url": "https://www.theguardian.com/media/2026/feb/16/social-media-restrictions-keir-starmer-announced",
+    "published": "Mon, 16 Feb 2026 15:06:37 GMT",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.65,
+    "rationale": "The UK government's move to regulate AI chatbots and restrict online platform harms to children represents democratic institutions asserting regulatory authority over AI-driven platforms, extending rule of law into digital spaces. This is a classic STRENGTHENS signal: existing governmental structures adapting to new technological challenges through legislation and oversight mechanisms. The consultation process and parliamentary framing indicate legitimate democratic procedure rather than technocratic bypass.",
+    "secondary_rationale": "A WEAKENS dimension exists insofar as blunt age-based restrictions and accelerated government powers to act on platforms could narrow civic space, chill expression, or concentrate executive power over digital speech environments — particularly if 'quick powers' to act bypass normal deliberative checks.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:21:10.260248"
+  },
+  {
+    "source": "bbc_tech",
+    "title": "Urgent research needed to tackle AI threats, says Google AI boss",
+    "summary": "But the head of the US delegation at the AI Impact Summit in Delhi says: \"We totally reject global governance of AI.\"",
+    "url": "https://www.bbc.com/news/articles/c0q3g0ln274o?at_medium=RSS&at_campaign=rss",
+    "published": "Fri, 20 Feb 2026 10:32:40 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.72,
+    "rationale": "The US delegation's explicit rejection of global AI governance at an international summit signals a deliberate move to prevent multilateral institutional frameworks from constraining AI development, concentrating rule-setting power in the hands of a few dominant state and corporate actors. This technocratic resistance to democratic oversight at the international level hollows out the possibility of accountable global governance structures, weakening the institutional capacity of democracies collectively to regulate transformative technology. The tension between urgency of research needs and refusal of governance coordination is itself a democratic deficit.",
+    "secondary_rationale": "The call for urgent AI safety research could be read as a STRENGTHENS signal if it leads to coordinated democratic oversight mechanisms, but the simultaneous rejection of global governance makes this reading secondary and contingent.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:21:16.165138"
+  },
+  {
+    "source": "bbc_tech",
+    "title": "Starmer 'appeasing' big tech firms, says online safety campaigner",
+    "summary": "Baroness Kidron tells the BBC the PM has being \"late to the party\" in regulating social media.",
+    "url": "https://www.bbc.com/news/articles/cdr2gm4y4ygo?at_medium=RSS&at_campaign=rss",
+    "published": "Fri, 20 Feb 2026 06:03:06 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.65,
+    "rationale": "The allegation that the UK Prime Minister is 'appeasing' big tech firms signals a weakening of democratic oversight capacity, where regulatory capture or political deference to powerful technology actors allows platform power to go unchecked. This represents a pattern of technocratic and commercial interests displacing democratic accountability over the information environment and civic infrastructure. Delayed or weakened online safety regulation leaves citizens exposed to algorithmic manipulation and platform-driven harms with limited institutional recourse.",
+    "secondary_rationale": "The STRENGTHENS dimension is present in the counter-pressure: Baroness Kidron's public advocacy and parliamentary critique represent democratic institutions attempting to assert regulatory authority over big tech, which is itself a signal of civic accountability mechanisms functioning.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:21:27.778458"
+  },
+  {
+    "source": "bbc_tech",
+    "title": "We will do battle with AI chatbots as we did with Grok, says Starmer",
+    "summary": "The government's new plans will mean no online platform will get a \"free pass\" on children's safety on the internet, the prime minister says.",
+    "url": "https://www.bbc.com/news/articles/cvg38x13x5yo?at_medium=RSS&at_campaign=rss",
+    "published": "Mon, 16 Feb 2026 06:52:17 GMT",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.65,
+    "rationale": "The UK government signalling regulatory action against AI chatbots and online platforms represents democratic institutions asserting oversight authority over powerful technology actors. Framing this as a 'battle' analogous to action against Grok suggests an accelerating pattern of state-level pushback to enforce child safety standards, which strengthens the rule-of-law dimension of democratic governance over AI platforms.",
+    "secondary_rationale": "The WEAKENS dimension is present as background context: the very need for such rhetoric implies platforms have been operating with impunity, eroding civic protections — the regulatory response is a reaction to prior democratic hollowing by under-regulated AI systems.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:22:11.322898"
+  },
+  {
+    "source": "bbc_tech",
+    "title": "Could Bill Gates and political tussles overshadow AI safety debate in Delhi?",
+    "summary": "As global tech leaders meet Delhi, India hopes to level the playing field for countries outside the US and China.",
+    "url": "https://www.bbc.com/news/articles/cr5l6gnen72o?at_medium=RSS&at_campaign=rss",
+    "published": "Tue, 17 Feb 2026 11:35:09 GMT",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "weak",
+    "signal_type": "emerging",
+    "domain": "power",
+    "confidence": 0.45,
+    "rationale": "India's push to level the playing field in AI governance for countries outside the US-China duopoly represents an effort to strengthen multilateral democratic oversight of AI development, ensuring more nations have voice in AI safety deliberations rather than ceding governance to two dominant powers.",
+    "secondary_rationale": "The 'political tussles' dimension and risk of overshadowing substantive AI safety debate signals how geopolitical power dynamics could weaken meaningful democratic governance of AI, subordinating safety concerns to national interest competition.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:22:24.695918"
+  },
+  {
+    "source": "aisnakeoil",
+    "title": "AI Won’t Automatically Make Legal Services Cheaper",
+    "summary": "Applying the AI as Normal Technology framework to legal services",
+    "url": "https://www.normaltech.ai/p/ai-wont-automatically-make-legal",
+    "published": "Thu, 12 Feb 2026 19:26:05 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "emerging",
+    "domain": "institutional",
+    "confidence": 0.55,
+    "rationale": "Access to legal services is foundational to rule of law and democratic participation; if AI fails to democratize legal access as promised, existing power asymmetries between well-resourced and under-resourced citizens persist or deepen. The critique that AI in legal services follows a 'normal technology' trajectory — accruing benefits to incumbents rather than expanding access — suggests technocratic optimism may mask structural inequality. This gradual hollowing of equal justice undermines democratic legitimacy without visible crisis.",
+    "secondary_rationale": "There is a STRENGTHENS dimension in that AI tools, even if imperfect, may still modestly improve some civic legal capacity for individuals who currently have no access at all, partially offsetting the skeptical reading.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:23:06.913312"
+  },
+  {
+    "source": "aisnakeoil",
+    "title": "AGI is not a milestone",
+    "summary": "There is no capability threshold that will lead to sudden impacts",
+    "url": "https://www.normaltech.ai/p/agi-is-not-a-milestone",
+    "published": "Thu, 01 May 2025 11:47:59 GMT",
+    "relevant": true,
+    "primary_category": "AMBIGUOUS",
+    "secondary_categories": [
+      "STRENGTHENS",
+      "WEAKENS"
+    ],
+    "signal_strength": "weak",
+    "signal_type": "emerging",
+    "domain": "epistemic",
+    "confidence": 0.45,
+    "rationale": "This piece challenges the dominant narrative that AGI represents a discrete capability threshold with sudden, transformative impacts on society. By reframing AGI as a non-milestone, it intervenes in the epistemic environment around AI governance and public deliberation — shaping how policymakers, citizens, and institutions anticipate and prepare for AI's democratic consequences. The argument cuts both ways: it may reduce panic-driven authoritarian responses (STRENGTHENS) or it may discourage precautionary democratic safeguards by downplaying discontinuous risks (WEAKENS).",
+    "secondary_rationale": "If widely accepted, this framing could strengthen democratic deliberation by grounding it in more realistic AI trajectories, reducing manipulation through AGI hype. Conversely, dismissing threshold thinking could weaken institutional preparedness for rapid capability jumps that do affect power concentration.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:23:22.721258"
+  },
+  {
+    "source": "aisnakeoil",
+    "title": "We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.",
+    "summary": "Technology Isn&#8217;t the Problem&#8212;or the Solution.",
+    "url": "https://www.normaltech.ai/p/we-looked-at-78-election-deepfakes",
+    "published": "Fri, 13 Dec 2024 20:51:29 GMT",
+    "relevant": true,
+    "primary_category": "AMBIGUOUS",
+    "secondary_categories": [
+      "WEAKENS",
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "plateauing",
+    "domain": "epistemic",
+    "confidence": 0.62,
+    "rationale": "This item complicates the dominant narrative that AI deepfakes are the primary driver of election misinformation, suggesting the problem is more structural and social than technological. By examining 78 real-world cases and finding that AI is not the central driver, it pushes back against both alarmist WEAKENS framings and techno-fix STRENGTHENS framings simultaneously. The analytical ambiguity is inherent to the signal itself: it reframes the threat model rather than confirming an existing scenario.",
+    "secondary_rationale": "It has WEAKENS resonance insofar as deepfakes do exist and are being used in electoral contexts, but also STRENGTHENS resonance in that empirical scrutiny and myth-busting can improve the quality of democratic discourse about AI risks and inform better-targeted policy responses.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:23:34.734373"
+  },
+  {
+    "source": "aisnakeoil",
+    "title": "Does the UK’s liver transplant matching algorithm systematically exclude younger patients?",
+    "summary": "Seemingly minor technical decisions can have life-or-death effects",
+    "url": "https://www.normaltech.ai/p/does-the-uks-liver-transplant-matching",
+    "published": "Mon, 11 Nov 2024 19:57:25 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "AMBIGUOUS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "emerging",
+    "domain": "institutional",
+    "confidence": 0.6,
+    "rationale": "Algorithmic decision-making in high-stakes public resource allocation (organ transplants) that systematically disadvantages certain demographic groups represents a form of technocratic displacement of deliberative justice — decisions with profound equity implications are embedded in opaque technical choices rather than transparent democratic processes. This erodes the accountability and legitimacy of public institutions by substituting algorithmic authority for contestable, democratically accountable policy. The 'seemingly minor technical decisions' framing highlights how consequential choices are obscured from civic scrutiny.",
+    "secondary_rationale": "There is an AMBIGUOUS dimension because the story could also be read as an accountability mechanism functioning — public analysts surfacing and critiquing algorithmic bias, which is a precondition for democratic correction rather than evidence of democratic failure alone.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:23:40.245169"
+  },
+  {
+    "source": "aisnakeoil",
+    "title": "AI existential risk probabilities are too unreliable to inform policy",
+    "summary": "How speculation gets laundered through pseudo-quantification",
+    "url": "https://www.normaltech.ai/p/ai-existential-risk-probabilities",
+    "published": "Fri, 26 Jul 2024 11:29:25 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "AMBIGUOUS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "epistemic",
+    "confidence": 0.62,
+    "rationale": "The article critiques the laundering of speculative AI risk estimates through pseudo-quantification, a practice that distorts democratic deliberation by giving false precision to policy-relevant claims. When unreliable probability estimates about AI existential risk are treated as credible inputs to governance decisions, technocratic framing displaces genuine democratic debate about AI futures. This narrows the epistemic space in which citizens and legislators can meaningfully participate in AI governance.",
+    "secondary_rationale": "The signal is also ambiguous in that exposing this pseudo-quantification — as this article appears to do — could itself be a corrective that strengthens democratic epistemic capacity, depending on how the critique lands in public discourse.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:24:01.759184"
+  },
+  {
+    "source": "aisnakeoil",
+    "title": "Scientists should use AI as a tool, not an oracle",
+    "summary": "How AI hype leads to flawed research that fuels more hype",
+    "url": "https://www.normaltech.ai/p/scientists-should-use-ai-as-a-tool",
+    "published": "Mon, 03 Jun 2024 18:34:13 GMT",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "epistemic",
+    "confidence": 0.62,
+    "rationale": "When AI is treated as an oracle rather than a tool in scientific research, it generates flawed findings that then circulate as authoritative knowledge, degrading the epistemic commons on which democratic deliberation depends. Hype cycles that inflate AI's credibility in research contexts erode the public's and policymakers' ability to make well-informed decisions, gradually hollowing out the evidence-based foundation of democratic governance. This represents a slow, structural weakening of the information environment rather than an acute collapse.",
+    "secondary_rationale": "There is a weak institutional dimension: if policy and regulatory bodies rely on AI-inflated scientific consensus, institutional decision-making becomes systematically distorted without visible crisis.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:24:14.461723"
+  },
+  {
+    "source": "freedom_house",
+    "title": "TNR Watch: Delivering Accountability for Spyware Abuse",
+    "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">TNR Watch: Delivering Accountability for Spyware Abuse</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span lang=\"lang\">zevans@freedom…</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-02-05T00:01:00-05:00\" title=\"Thursday, February 5, 2026 - 00:01\">Thu, 02/05/2026 - 00:01</time>\n</span>\n\n  <div class=\"field field--name-field-article-type field--type-list-string field--label-above\">\n    <div class=\"field__label\">Type</div>\n              <div class=\"field__item\">TNR Watch</div>\n          </div>\n\n  <div class=\"field field--name-field-image field--type-entity-reference field--label-above\">",
+    "url": "https://freedomhouse.org/article/tnr-watch-delivering-accountability-spyware-abuse",
+    "published": "Thu, 05 Feb 2026 05:01:00 +0000",
+    "relevant": true,
+    "primary_category": "STRENGTHENS",
+    "secondary_categories": [
+      "WEAKENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "institutional",
+    "confidence": 0.52,
+    "rationale": "Freedom House's TNR Watch reporting on spyware accountability signals efforts to hold states and vendors responsible for surveillance technology abuses, which represents a strengthening of rule-of-law mechanisms and civil society oversight capacity. Accountability frameworks for spyware (Pegasus-type tools) are gradually maturing through litigation, sanctions, and export controls, reinforcing democratic norms against targeted surveillance of journalists, activists, and political opponents. This institutional accountability work directly counters the erosion of civic space enabled by commercial spyware.",
+    "secondary_rationale": "The underlying subject — spyware abuse — is a strong WEAKENS signal, as these tools have been documented suppressing dissent, targeting opposition figures, and undermining free political participation. The dual nature here is that accountability efforts exist precisely because the democratic harm is real and ongoing.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:24:50.502437"
+  },
+  {
+    "source": "firstdraft",
+    "title": "Australian election misinformation playbook",
+    "summary": "<p>The challenge of monitoring, understanding, defining and responding to mis- and disinformation is exacerbated during election campaigns. This report outlines tactics used by agents of disinformation to undermine elections as observed by First Draft’s global monitoring since 2015.  This is placed within a brief overview of the characteristics and vulnerabilities that bear consideration during elections [&#8230;]</p>\n<p>The post <a href=\"https://firstdraftnews.org/articles/australian-election-misinformation-playbook/\" rel=\"nofollow\">Australian election misinformation playbook</a> appeared first on <a href=\"https://firstdraftnews.org\" rel=\"nofollow\">First Draft</a>.</p>",
+    "url": "https://firstdraftnews.org/articles/australian-election-misinformation-playbook/",
+    "published": "Wed, 16 Mar 2022 00:00:42 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "multiple",
+    "confidence": 0.72,
+    "rationale": "This report documents systematic disinformation tactics deployed during elections, representing a pattern of information environment manipulation that hollows out democratic procedures by undermining voters' epistemic capacity to make informed choices. The 'playbook' framing suggests recurring, institutionalized tactics rather than isolated incidents, pointing to a structurally weakening trend in electoral integrity through information manipulation.",
+    "secondary_rationale": "The STRENGTHENS dimension is present insofar as First Draft's monitoring and codification of these tactics represents civic infrastructure building — transparency and awareness efforts that help democratic actors recognize and counter disinformation campaigns.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:25:09.241877"
+  },
+  {
+    "source": "firstdraft",
+    "title": "An introduction to live audio social media and misinformation",
+    "summary": "<p>What does the rise of live, audio-based social media mean for identifying and moderating misinformation? We’ve taken a look at the platforms and their moderation policies, and offer some key takeaways for journalists and misinformation researchers. (Updated January 31, 2022.) Audio misinformation comes in many forms One of the challenges of tracking audio misinformation on [&#8230;]</p>\n<p>The post <a href=\"https://firstdraftnews.org/articles/clubhouse-facebook-and-twitter-live-audio-and-misinformation/\" rel=\"nofollow\">An introduction to live audio social media and misinformation</a> appeared first on <a href=\"https://firstdraftnews.org\" rel=\"nofollow\">First Draft</a>.</p>",
+    "url": "https://firstdraftnews.org/articles/clubhouse-facebook-and-twitter-live-audio-and-misinformation/",
+    "published": "Mon, 31 Jan 2022 13:24:41 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "STRENGTHENS"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "emerging",
+    "domain": "epistemic",
+    "confidence": 0.62,
+    "rationale": "Live audio social media presents a structurally difficult moderation challenge: ephemeral, real-time speech is harder to flag, archive, and counter than text or recorded media, creating conditions where misinformation can spread with reduced accountability. This gradual erosion of the information environment's integrity represents a weakening of the epistemic foundations democracy depends on, as moderation norms and tools lag behind platform capabilities.",
+    "secondary_rationale": "The STRENGTHENS dimension is visible in the journalistic and research framing — firstdraft is building civic capacity by documenting the challenge and offering guidance to misinformation researchers, representing an institutional response to the threat. Note the item predates widespread AI-generated audio, so AI's role here is indirect (platform algorithms, not generative AI), slightly limiting its direct relevance to AI-specific democratic signals.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:25:16.769808"
+  },
+  {
+    "source": "firstdraft",
+    "title": "Facebook comment sections rife with misinformation following Pfizer’s Covid-19 antiviral pill announcement",
+    "summary": "<p>Last week Pfizer published interim trial results for its experimental Covid-19 antiviral pill, Paxlovid, which the company said reduced the chance of hospitalization or death for some adults by almost 90 per cent. The US pharmaceutical giant’s analysis included 1,219 adults who had been diagnosed with mild to moderate Covid-19 and who had at least [&#8230;]</p>\n<p>The post <a href=\"https://firstdraftnews.org/articles/facebook-comment-sections-rife-with-misinformation-following-pfizers-covid-19-antiviral-pill-announcement/\" rel=\"nofollow\">Facebook comment sections rife with misinformation following Pfizer’s Covid-19 antiviral pill announcement</a> appeared first on <a href=\"https://firstdraftnews.org\" rel=\"nofollow\">First Draft</a>.</p>",
+    "url": "https://firstdraftnews.org/articles/facebook-comment-sections-rife-with-misinformation-following-pfizers-covid-19-antiviral-pill-announcement/",
+    "published": "Fri, 12 Nov 2021 15:51:02 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "epistemic",
+    "confidence": 0.62,
+    "rationale": "The spread of health misinformation in Facebook comment sections represents a platform-mediated degradation of the shared information environment that democratic deliberation depends on. While this specific item predates widespread generative AI, it documents the structural pattern of algorithmically amplified misinformation that AI now dramatically accelerates. The hollowing out of epistemic commons — where citizens cannot agree on basic facts — is a gradual but cumulative threat to democratic legitimacy and public reasoning.",
+    "secondary_rationale": "The item is only weakly AI-specific as written; its relevance as an anticipatory signal lies in documenting the baseline social media misinformation dynamic that AI-generated content and AI-driven recommendation systems are now intensifying at scale.",
+    "finnish_relevance": true,
+    "scanned_at": "2026-02-20T11:25:35.650419"
+  },
+  {
+    "source": "poynter",
+    "title": "Viral posts falsely name Savannah Guthrie’s husband as a ‘co-conspirator’ in the Epstein files",
+    "summary": "<p>After Nancy Guthrie’s Feb.1 abduction from her Tucson, Arizona, home, her daughter &#8220;Today&#8221; host Savannah Guthrie put out a call on social media for tips on her mother’s whereabouts, pleading for her safe return. [&#8230;]</p>\n<p>The post <a href=\"https://www.poynter.org/fact-checking/2026/michael-feldman-fgs-global-epstein-files/\">Viral posts falsely name Savannah Guthrie’s husband as a ‘co-conspirator’ in the Epstein files</a> appeared first on <a href=\"https://www.poynter.org\">Poynter</a>.</p>",
+    "url": "https://www.poynter.org/fact-checking/2026/michael-feldman-fgs-global-epstein-files/",
+    "published": "Thu, 19 Feb 2026 11:30:55 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "epistemic",
+    "confidence": 0.65,
+    "rationale": "This case illustrates how viral disinformation exploits emotionally charged moments (a family crisis) and politically resonant narratives (Epstein files) to spread false accusations, degrading the shared information environment that democratic deliberation depends on. The weaponization of personal tragedy to launder conspiracy content represents a pattern of epistemic erosion that gradually hollows out civic trust and media credibility. While AI is not explicitly named, the rapid amplification mechanics of such viral falsehoods are increasingly AI-assisted or AI-accelerated.",
+    "secondary_rationale": "The COLLAPSE secondary dimension applies weakly insofar as repeated high-profile disinformation events tied to politically sensitive topics (Epstein files) cumulatively contribute to institutional delegitimization and acute trust crises in media and public figures.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:25:57.762230"
+  },
+  {
+    "source": "poynter",
+    "title": "In the age of AI and body cameras, no video speaks for itself",
+    "summary": "<p>Video footage of federal agents’ killing of Minnesota residents Renee Good and Alex Pretti has galvanized public conversation about the role of immigration enforcement, rule of law and accountability. Commentators, [&#8230;]</p>\n<p>The post <a href=\"https://www.poynter.org/ethics-trust/2026/tips-verifying-viral-video-ai-deepfakes-footage/\">In the age of AI and body cameras, no video speaks for itself</a> appeared first on <a href=\"https://www.poynter.org\">Poynter</a>.</p>",
+    "url": "https://www.poynter.org/ethics-trust/2026/tips-verifying-viral-video-ai-deepfakes-footage/",
+    "published": "Wed, 18 Feb 2026 12:00:56 +0000",
+    "relevant": true,
+    "primary_category": "WEAKENS",
+    "secondary_categories": [
+      "COLLAPSE"
+    ],
+    "signal_strength": "moderate",
+    "signal_type": "accelerating",
+    "domain": "epistemic",
+    "confidence": 0.72,
+    "rationale": "The normalization of AI deepfakes has fundamentally undermined video evidence as a tool of democratic accountability — a cornerstone of civic oversight over state violence and institutional power. When authentic footage of federal agents killing civilians can no longer 'speak for itself' due to deepfake suspicion, the epistemic foundation for public deliberation and accountability erodes. This represents a structural weakening of the information environment that democratic accountability depends upon.",
+    "secondary_rationale": "The COLLAPSE secondary dimension is relevant because this concerns acute, visible incidents of state violence where the failure of shared evidentiary reality could contribute to institutional delegitimization and inability to establish basic factual consensus about government conduct.",
+    "finnish_relevance": false,
+    "scanned_at": "2026-02-20T11:26:13.824987"
   }
 ]
