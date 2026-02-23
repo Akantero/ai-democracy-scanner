@@ -17,17 +17,14 @@
   header p{color:var(--muted);font-size:0.8rem;margin-top:0.2rem;}
   .badge{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:0.25rem 0.75rem;font-size:0.75rem;color:var(--muted);}
   .main{padding:1.5rem 2rem;max-width:1400px;margin:0 auto;}
-
   .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;margin-bottom:1.5rem;}
   @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
   .stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.9rem;text-align:center;}
   .stat-n{font-size:1.6rem;font-weight:800;}
   .stat-label{font-size:0.7rem;color:var(--muted);margin-top:0.2rem;line-height:1.3;}
-
   .filters{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center;}
   .filters label{color:var(--muted);font-size:0.8rem;}
   select{background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:0.4rem 0.75rem;font-size:0.82rem;cursor:pointer;}
-
   .cat-tabs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.25rem;}
   .tab{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:6px;padding:0.35rem 0.85rem;font-size:0.78rem;cursor:pointer;transition:all .15s;}
   .tab:hover{color:#fff;border-color:#475569;}
@@ -37,7 +34,6 @@
   .tab.active[data-cat="WEAKENS"]      {background:var(--W);border-color:var(--W);color:#fff;}
   .tab.active[data-cat="NEW_DEMOCRACY"]{background:var(--N);border-color:var(--N);color:#fff;}
   .tab.active[data-cat="AMBIGUOUS"]    {background:var(--A);border-color:var(--A);color:#fff;}
-
   .signal-list{display:flex;flex-direction:column;gap:0.7rem;max-height:560px;overflow-y:auto;}
   .signal{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;border-left:3px solid var(--border);}
   .signal[data-primary="STRENGTHENS"]  {border-left-color:var(--S);}
@@ -65,7 +61,6 @@
   .signal-rationale{font-size:0.79rem;color:var(--muted);line-height:1.5;}
   .signal-secondary{font-size:0.75rem;color:#64748b;margin-top:0.3rem;font-style:italic;line-height:1.4;}
   .finn-dot{display:inline-block;width:6px;height:6px;background:#38bdf8;border-radius:50%;margin-right:3px;}
-
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
   @media(max-width:800px){.grid{grid-template-columns:1fr;}}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
@@ -73,7 +68,6 @@
   .chart-wrap{position:relative;height:210px;}
   .quad-wrap{position:relative;height:400px;}
   .quad-hint{display:flex;justify-content:space-between;font-size:0.7rem;color:#475569;margin-top:0.5rem;padding:0 0.25rem;}
-
   ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:transparent;} ::-webkit-scrollbar-thumb{background:#334155;border-radius:999px;}
 </style>
 </head>
@@ -85,9 +79,7 @@
   </div>
   <span class="badge" id="last-updated">Loading...</span>
 </header>
-
 <div class="main">
-
   <div class="stats">
     <div class="stat"><div class="stat-n" style="color:var(--S)" id="n-s">0</div><div class="stat-label">Demokratia vahvistuu</div></div>
     <div class="stat"><div class="stat-n" style="color:var(--N)" id="n-n">0</div><div class="stat-label">Radikaalisti uusi demokratia</div></div>
@@ -95,7 +87,6 @@
     <div class="stat"><div class="stat-n" style="color:var(--C)" id="n-c">0</div><div class="stat-label">Demokratia romahtaa</div></div>
     <div class="stat"><div class="stat-n" style="color:var(--A)" id="n-a">0</div><div class="stat-label">Monitulkintainen</div></div>
   </div>
-
   <div class="filters">
     <label>Domain:</label>
     <select id="domain-filter">
@@ -118,7 +109,6 @@
       <span class="finn-dot"></span>Suomi-relevanssi
     </label>
   </div>
-
   <div class="card" style="margin-bottom:1.5rem">
     <h2>Signaalivirta</h2>
     <div class="cat-tabs">
@@ -131,7 +121,6 @@
     </div>
     <div class="signal-list" id="signal-list"></div>
   </div>
-
   <div class="card" style="margin-bottom:1.5rem">
     <h2>Skenaariokenttä</h2>
     <div class="quad-wrap"><canvas id="quadrant-chart"></canvas></div>
@@ -141,7 +130,6 @@
       <span>Radikaalisti uusi →</span>
     </div>
   </div>
-
   <div class="grid">
     <div class="card">
       <h2>Aikajana — signaalit viikottain</h2>
@@ -152,31 +140,84 @@
       <div class="chart-wrap"><canvas id="domain-chart"></canvas></div>
     </div>
   </div>
-
 </div>
 
 <script>
-// ── CONSTANTS ──────────────────────────────────────────────────────────────
+// ── CONSTANTS ─────────────────────────────────────────────────────────────
 const CAT_LABELS = {STRENGTHENS:"Vahvistuu",NEW_DEMOCRACY:"Uusi demokratia",WEAKENS:"Heikentyy",COLLAPSE:"Romahtaa",AMBIGUOUS:"Monitulkintainen"};
 const CAT_COLORS = {STRENGTHENS:"#22c55e",NEW_DEMOCRACY:"#8b5cf6",WEAKENS:"#f59e0b",COLLAPSE:"#ef4444",AMBIGUOUS:"#6b7280"};
 const QUAD_POS   = {STRENGTHENS:{x:-0.5,y:0.5},NEW_DEMOCRACY:{x:0.5,y:0.5},WEAKENS:{x:-0.5,y:-0.5},COLLAPSE:{x:0.5,y:-0.5},AMBIGUOUS:{x:0,y:0}};
 const STR_SIZE   = {weak:5,moderate:9,strong:14};
+const SAFE_CATS  = new Set(["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"]);
+const SAFE_DOMS  = new Set(["epistemic","procedural","institutional","participatory","power","multiple"]);
+const SAFE_STRS  = new Set(["weak","moderate","strong"]);
+const SAFE_TYPES = new Set(["emerging","accelerating","plateauing","reversing"]);
 
-// ── STATE ──────────────────────────────────────────────────────────────────
+// ── SAFE DOM HELPERS ──────────────────────────────────────────────────────
+// All user-facing content goes through these — no innerHTML with signal data
+
+function txt(str) {
+  // Returns a text node — safe against XSS
+  return document.createTextNode(String(str || ""));
+}
+
+function el(tag, attrs, children) {
+  const node = document.createElement(tag);
+  if (attrs) Object.entries(attrs).forEach(([k,v]) => { if(v !== null && v !== undefined) node.setAttribute(k, v); });
+  if (children) (Array.isArray(children) ? children : [children]).forEach(c => {
+    if (c === null || c === undefined) return;
+    node.appendChild(typeof c === "string" ? txt(c) : c);
+  });
+  return node;
+}
+
+function safeUrl(raw) {
+  // Only allow http/https URLs; return null for anything else
+  try {
+    const u = new URL(String(raw || ""));
+    return (u.protocol === "http:" || u.protocol === "https:") ? u.href : null;
+  } catch { return null; }
+}
+
+function sanitizeSignal(s) {
+  // Validate and fill safe defaults for every field used in rendering
+  return {
+    title:                String(s.title || "").slice(0, 300),
+    url:                  safeUrl(s.url),
+    source:               String(s.source || "").replace(/[^a-z0-9_\- ]/gi, "").slice(0, 60),
+    primary_category:     SAFE_CATS.has(s.primary_category) ? s.primary_category : "AMBIGUOUS",
+    secondary_categories: Array.isArray(s.secondary_categories)
+                            ? s.secondary_categories.filter(c => SAFE_CATS.has(c))
+                            : [],
+    signal_strength:      SAFE_STRS.has(s.signal_strength) ? s.signal_strength : "weak",
+    signal_type:          SAFE_TYPES.has(s.signal_type) ? s.signal_type : "emerging",
+    domain:               SAFE_DOMS.has(s.domain) ? s.domain : "multiple",
+    confidence:           Math.min(1, Math.max(0, parseFloat(s.confidence) || 0)),
+    rationale:            String(s.rationale || "").slice(0, 600),
+    secondary_rationale:  String(s.secondary_rationale || "").slice(0, 400),
+    finnish_relevance:    s.finnish_relevance === true,
+    published:            s.published || s.scanned_at || "",
+    scanned_at:           s.scanned_at || "",
+  };
+}
+
+// ── STATE ─────────────────────────────────────────────────────────────────
 let signals = [], activeTab = "ALL";
 let quadChart = null, tlChart = null, domChart = null;
 
-// ── LOAD ───────────────────────────────────────────────────────────────────
 async function loadSignals() {
   try {
     const r = await fetch("signals.json");
-    if (r.ok) signals = await r.json();
-  } catch(e) { /* use empty array */ }
+    if (r.ok) {
+      const raw = await r.json();
+      if (Array.isArray(raw)) signals = raw.map(sanitizeSignal);
+    }
+  } catch(e) { /* stay with empty array */ }
   render();
 }
 
-// ── FILTER ─────────────────────────────────────────────────────────────────
-function allCats(s) { return [s.primary_category, ...(s.secondary_categories||[])]; }
+// ── FILTER ────────────────────────────────────────────────────────────────
+function allCats(s) { return [s.primary_category, ...s.secondary_categories]; }
 
 function filtered() {
   const dom = document.getElementById("domain-filter").value;
@@ -191,44 +232,76 @@ function filtered() {
   });
 }
 
-// ── RENDER SIGNALS ─────────────────────────────────────────────────────────
+// ── RENDER SIGNALS (DOM-based, no innerHTML with data) ─────────────────────
 function renderSignals(data) {
-  const el = document.getElementById("signal-list");
+  const list = document.getElementById("signal-list");
+  while (list.firstChild) list.removeChild(list.firstChild);
+
   if (!data.length) {
-    el.innerHTML = '<p style="color:var(--muted);text-align:center;padding:2rem">Ei signaaleja valituilla suodattimilla.</p>';
+    list.appendChild(el("p", {style:"color:var(--muted);text-align:center;padding:2rem"}, "Ei signaaleja valituilla suodattimilla."));
     return;
   }
-  el.innerHTML = data.map(s => {
-    const sec = (s.secondary_categories||[]).filter(c => c !== s.primary_category);
-    const pct = Math.round((s.confidence||0)*100);
-    const color = CAT_COLORS[s.primary_category]||"#475569";
-    return `<div class="signal" data-primary="${s.primary_category}">
-      <div class="signal-header">
-        <div class="signal-title"><a href="${s.url||'#'}" target="_blank">${s.title||''}</a></div>
-        <div class="cats">
-          <span class="cat-label ${s.primary_category}">${CAT_LABELS[s.primary_category]||s.primary_category}</span>
-          ${sec.map(c=>`<span class="cat-label secondary ${c}">${CAT_LABELS[c]||c}</span>`).join('')}
-        </div>
-      </div>
-      <div class="signal-meta">
-        <span class="pill">${(s.source||'').replace(/_/g,' ')}</span>
-        <span class="pill">${s.domain||''}</span>
-        <span class="pill ${s.signal_strength==='strong'?'strong':''}">${s.signal_strength||''}</span>
-        <span class="pill">${s.signal_type||''}</span>
-        <span title="Confidence ${pct}%">
-          <span class="conf-bar"><span class="conf-fill" style="width:${pct}%;background:${color}"></span></span>
-          <span style="font-size:0.7rem;color:#64748b">${pct}%</span>
-        </span>
-        ${s.finnish_relevance?'<span class="pill" style="color:#38bdf8;border-color:#0c4a6e"><span class="finn-dot"></span>FI</span>':''}
-        <span>${new Date(s.published||s.scanned_at||Date.now()).toLocaleDateString('fi-FI')}</span>
-      </div>
-      <div class="signal-rationale">${s.rationale||''}</div>
-      ${s.secondary_rationale?`<div class="signal-secondary">↳ ${s.secondary_rationale}</div>`:''}
-    </div>`;
-  }).join('');
+
+  data.forEach(s => {
+    const pct  = Math.round(s.confidence * 100);
+    const color = CAT_COLORS[s.primary_category] || "#475569";
+    const sec  = s.secondary_categories.filter(c => c !== s.primary_category);
+
+    // Title — link if URL is safe, plain text otherwise
+    const titleContent = s.url
+      ? el("a", {href: s.url, target:"_blank", rel:"noopener noreferrer"}, s.title)
+      : el("span", null, s.title);
+
+    // Category badges
+    const cats = el("div", {class:"cats"});
+    cats.appendChild(el("span", {class:`cat-label ${s.primary_category}`}, CAT_LABELS[s.primary_category]));
+    sec.forEach(c => cats.appendChild(el("span", {class:`cat-label secondary ${c}`}, CAT_LABELS[c])));
+
+    // Meta pills
+    const meta = el("div", {class:"signal-meta"});
+    meta.appendChild(el("span", {class:"pill"}, s.source.replace(/_/g," ")));
+    meta.appendChild(el("span", {class:"pill"}, s.domain));
+    meta.appendChild(el("span", {class:`pill${s.signal_strength==="strong"?" strong":""}`}, s.signal_strength));
+    meta.appendChild(el("span", {class:"pill"}, s.signal_type));
+
+    // Confidence bar
+    const confWrap = el("span", {title:`Confidence ${pct}%`});
+    const bar = el("span", {class:"conf-bar"});
+    bar.appendChild(el("span", {class:"conf-fill", style:`width:${pct}%;background:${color}`}));
+    confWrap.appendChild(bar);
+    confWrap.appendChild(el("span", {style:"font-size:0.7rem;color:#64748b"}, ` ${pct}%`));
+    meta.appendChild(confWrap);
+
+    if (s.finnish_relevance) {
+      const fi = el("span", {class:"pill", style:"color:#38bdf8;border-color:#0c4a6e"});
+      fi.appendChild(el("span", {class:"finn-dot"}));
+      fi.appendChild(txt("FI"));
+      meta.appendChild(fi);
+    }
+
+    const dateStr = s.published || s.scanned_at;
+    if (dateStr) {
+      try { meta.appendChild(el("span", null, new Date(dateStr).toLocaleDateString("fi-FI"))); }
+      catch { /* invalid date, skip */ }
+    }
+
+    // Assemble card
+    const header = el("div", {class:"signal-header"});
+    header.appendChild(el("div", {class:"signal-title"}, titleContent));
+    header.appendChild(cats);
+
+    const card = el("div", {class:"signal", "data-primary": s.primary_category});
+    card.appendChild(header);
+    card.appendChild(meta);
+    card.appendChild(el("div", {class:"signal-rationale"}, s.rationale));
+    if (s.secondary_rationale) {
+      card.appendChild(el("div", {class:"signal-secondary"}, `↳ ${s.secondary_rationale}`));
+    }
+    list.appendChild(card);
+  });
 }
 
-// ── RENDER STATS ───────────────────────────────────────────────────────────
+// ── RENDER STATS ──────────────────────────────────────────────────────────
 function renderStats() {
   const count = cat => signals.filter(s => s.primary_category === cat).length;
   document.getElementById("n-s").textContent = count("STRENGTHENS");
@@ -239,90 +312,72 @@ function renderStats() {
   const dates = signals.map(s => s.scanned_at||s.published).filter(Boolean).sort();
   const last = dates[dates.length-1];
   document.getElementById("last-updated").textContent = last
-    ? `Viimeksi skannattu: ${new Date(last).toLocaleDateString('fi-FI')}`
+    ? `Viimeksi skannattu: ${new Date(last).toLocaleDateString("fi-FI")}`
     : "Ei dataa";
 }
 
-// ── QUADRANT CHART ─────────────────────────────────────────────────────────
-const quadrantLabelPlugin = {
-  id: "quadrantLines",
+// ── QUADRANT CHART ────────────────────────────────────────────────────────
+const quadrantLinePlugin = {
+  id:"quadrantLines",
   afterDraw(chart) {
-    const {ctx, chartArea:{left,right,top,bottom,width,height}} = chart;
-    const cx = left + width/2, cy = top + height/2;
+    const {ctx,chartArea:{left,right,top,bottom,width,height}} = chart;
+    const cx = left+width/2, cy = top+height/2;
     ctx.save();
-    // Dividing lines
-    ctx.strokeStyle = "#334155"; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+    ctx.strokeStyle="#334155"; ctx.lineWidth=1; ctx.setLineDash([4,4]);
     ctx.beginPath(); ctx.moveTo(cx,top+4); ctx.lineTo(cx,bottom-4); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(left+4,cy); ctx.lineTo(right-4,cy); ctx.stroke();
     ctx.setLineDash([]);
-    // Axis labels
-    ctx.font = "600 10px system-ui"; ctx.fillStyle = "#475569"; ctx.textAlign = "center";
-    ctx.fillText("Vahvistuu ▲", cx, top + 14);
-    ctx.fillText("▼ Heikentyy / romahtaa", cx, bottom - 4);
-    ctx.save(); ctx.translate(left+12, cy); ctx.rotate(-Math.PI/2);
-    ctx.fillText("◄ Nykyiset instituutiot", 0, 0); ctx.restore();
-    ctx.save(); ctx.translate(right-12, cy); ctx.rotate(Math.PI/2);
-    ctx.fillText("◄ Radikaalisti uusi", 0, 0); ctx.restore();
+    ctx.font="600 10px system-ui"; ctx.fillStyle="#475569"; ctx.textAlign="center";
+    ctx.fillText("Vahvistuu ▲", cx, top+14);
+    ctx.fillText("▼ Heikentyy / romahtaa", cx, bottom-4);
+    ctx.save(); ctx.translate(left+12,cy); ctx.rotate(-Math.PI/2);
+    ctx.fillText("◄ Nykyiset instituutiot",0,0); ctx.restore();
+    ctx.save(); ctx.translate(right-12,cy); ctx.rotate(Math.PI/2);
+    ctx.fillText("◄ Radikaalisti uusi",0,0); ctx.restore();
     ctx.restore();
   }
 };
 
 function renderQuadrant(data) {
   const cats = ["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"];
-  const datasets = cats.map(cat => {
-    const pts = data
-      .filter(s => s.primary_category === cat)
-      .map(s => {
-        const base = QUAD_POS[cat] || {x:0,y:0};
-        return {
-          x: base.x + (Math.random()-0.5)*0.75,
-          y: base.y + (Math.random()-0.5)*0.75,
-          r: STR_SIZE[s.signal_strength] || 6,
-          title: s.title || "",
-        };
-      });
-    return {
-      label: CAT_LABELS[cat],
-      data: pts,
-      backgroundColor: CAT_COLORS[cat]+"99",
-      borderColor: CAT_COLORS[cat],
-      borderWidth: 1,
-    };
-  });
+  const datasets = cats.map(cat => ({
+    label: CAT_LABELS[cat],
+    data: data.filter(s => s.primary_category === cat).map(s => {
+      const base = QUAD_POS[cat]||{x:0,y:0};
+      return { x: base.x+(Math.random()-.5)*.75, y: base.y+(Math.random()-.5)*.75,
+               r: STR_SIZE[s.signal_strength]||6, title: s.title };
+    }),
+    backgroundColor: CAT_COLORS[cat]+"99",
+    borderColor: CAT_COLORS[cat],
+    borderWidth: 1,
+  }));
 
   if (quadChart) { quadChart.destroy(); quadChart = null; }
-  const ctx = document.getElementById("quadrant-chart").getContext("2d");
-  quadChart = new Chart(ctx, {
-    type: "bubble",
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { labels: { color:"#94a3b8", boxWidth:12 } },
-        tooltip: {
-          callbacks: {
-            title: () => "",
-            label: item => {
-              const t = item.raw.title || "";
-              return t.length > 72 ? t.slice(0,72)+"…" : t;
-            }
-          }
-        }
+  quadChart = new Chart(document.getElementById("quadrant-chart").getContext("2d"), {
+    type:"bubble", data:{datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{labels:{color:"#94a3b8",boxWidth:12}},
+        tooltip:{callbacks:{title:()=>"", label:i => {
+          const t = String(i.raw.title||"");
+          return t.length>72 ? t.slice(0,72)+"…" : t;
+        }}}
       },
-      scales: {
-        x: { min:-1, max:1, grid:{color:"#1e293b"}, ticks:{display:false}, border:{color:"#334155"} },
-        y: { min:-1, max:1, grid:{color:"#1e293b"}, ticks:{display:false}, border:{color:"#334155"} },
+      scales:{
+        x:{min:-1,max:1,grid:{color:"#1e293b"},ticks:{display:false},border:{color:"#334155"}},
+        y:{min:-1,max:1,grid:{color:"#1e293b"},ticks:{display:false},border:{color:"#334155"}},
       }
     },
-    plugins: [quadrantLabelPlugin]
+    plugins:[quadrantLinePlugin]
   });
 }
 
-// ── TIMELINE ───────────────────────────────────────────────────────────────
+// ── TIMELINE ──────────────────────────────────────────────────────────────
 function weekLabel(d) {
   const date = new Date(d);
-  const w = Math.floor((date - new Date(date.getFullYear(),0,1))/604800000);
+  if (isNaN(date)) return "unknown";
+  const w = Math.floor((date-new Date(date.getFullYear(),0,1))/604800000);
   return `V${w+1}/${date.getFullYear()}`;
 }
 
@@ -330,13 +385,13 @@ function renderTimeline() {
   const cats = ["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE"];
   const weeks = {};
   signals.forEach(s => {
-    const w = weekLabel(s.scanned_at||s.published||new Date().toISOString());
+    const w = weekLabel(s.scanned_at||s.published||"");
     if (!weeks[w]) { weeks[w]={}; cats.forEach(c=>weeks[w][c]=0); }
     if (cats.includes(s.primary_category)) weeks[w][s.primary_category]++;
   });
-  const labels = Object.keys(weeks).sort();
-  const mk = (cat,color,lbl) => ({label:lbl,data:labels.map(l=>weeks[l][cat]||0),borderColor:color,backgroundColor:color+"33",fill:true,tension:0.3,pointRadius:3});
-  if (tlChart) { tlChart.destroy(); tlChart = null; }
+  const labels = Object.keys(weeks).filter(k=>k!=="unknown").sort();
+  const mk = (cat,color,lbl) => ({label:lbl,data:labels.map(l=>weeks[l]?.[cat]||0),borderColor:color,backgroundColor:color+"33",fill:true,tension:0.3,pointRadius:3});
+  if (tlChart) { tlChart.destroy(); tlChart=null; }
   tlChart = new Chart(document.getElementById("timeline-chart"), {
     type:"line",
     data:{labels,datasets:[mk("STRENGTHENS","#22c55e","Vahvistuu"),mk("NEW_DEMOCRACY","#8b5cf6","Uusi demokratia"),mk("WEAKENS","#f59e0b","Heikentyy"),mk("COLLAPSE","#ef4444","Romahtaa")]},
@@ -344,11 +399,11 @@ function renderTimeline() {
   });
 }
 
-// ── DOMAIN CHART ───────────────────────────────────────────────────────────
+// ── DOMAIN CHART ──────────────────────────────────────────────────────────
 function renderDomain() {
   const doms = {};
   signals.forEach(s => { doms[s.domain]=(doms[s.domain]||0)+1; });
-  if (domChart) { domChart.destroy(); domChart = null; }
+  if (domChart) { domChart.destroy(); domChart=null; }
   domChart = new Chart(document.getElementById("domain-chart"), {
     type:"doughnut",
     data:{labels:Object.keys(doms),datasets:[{data:Object.values(doms),backgroundColor:["#6366f1","#22c55e","#ef4444","#f59e0b","#8b5cf6","#06b6d4"],borderColor:"#1e293b",borderWidth:2}]},
@@ -356,7 +411,7 @@ function renderDomain() {
   });
 }
 
-// ── MAIN RENDER ────────────────────────────────────────────────────────────
+// ── MAIN RENDER ───────────────────────────────────────────────────────────
 function render() {
   const data = filtered();
   renderSignals(data);
@@ -366,10 +421,9 @@ function render() {
   renderDomain();
 }
 
-// ── EVENTS ─────────────────────────────────────────────────────────────────
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
-  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-  t.classList.add("active"); activeTab = t.dataset.cat; render();
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  t.classList.add("active"); activeTab=t.dataset.cat; render();
 }));
 ["domain-filter","strength-filter","finn-only"].forEach(id =>
   document.getElementById(id).addEventListener("change", render)
