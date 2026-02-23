@@ -10,77 +10,75 @@ import anthropic
 import feedparser
 import json
 import os
+import time
+import requests
 from datetime import datetime
 
 # ── API KEY ───────────────────────────────────────────────────────────────────
-# Never paste your key here. Set it as an environment variable:
-#   Mac/Linux: export ANTHROPIC_API_KEY="sk-ant-..."
-#   GitHub:    set as a repository secret (see setup guide)
-
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 
 # ── NEWS FEEDS ────────────────────────────────────────────────────────────────
-# Add or remove feeds freely. Format: "name": "rss_url"
-
 RSS_FEEDS = {
-
-    # ── FINNISH SOURCES ───────────────────────────────────────────────────────
+    # Finnish sources
     "yle_uutiset":      "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET",
     "yle_tekno":        "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-34837",
     "yle_politiikka":   "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-38033",
     "hs_paakirj":       "https://www.hs.fi/rss/paakirjoitukset.xml",
     "mtv_uutiset":      "https://www.mtvuutiset.fi/rss/uutiset.rss",
 
-    # ── FINNISH GOVERNMENT & INSTITUTIONS ─────────────────────────────────────
+    # Finnish government & institutions
     "valtioneuvosto":   "https://valtioneuvosto.fi/rss/tiedotteet.rss",
     "eduskunta":        "https://www.eduskunta.fi/FI/tiedotteet/Sivut/RSS.aspx",
     "oikeusministerio": "https://oikeusministerio.fi/rss/tiedotteet.rss",
     "traficom":         "https://www.traficom.fi/fi/rss/uutiset",
 
-    # ── EU POLICY & GOVERNANCE ────────────────────────────────────────────────
+    # EU policy & governance
     "politico_eu":      "https://www.politico.eu/feed/",
     "euractiv_digital": "https://www.euractiv.com/sections/digital/feed/",
     "euractiv_ai":      "https://www.euractiv.com/sections/digital/artificial-intelligence/feed/",
     "eu_commission":    "https://ec.europa.eu/newsroom/dae/rss.cfm",
     "europarl":         "https://www.europarl.europa.eu/rss/doc/top-stories/en.xml",
-    "edri":             "https://edri.org/feed/",           # European digital rights NGO
+    "edri":             "https://edri.org/feed/",
 
-    # ── GLOBAL NEWS ───────────────────────────────────────────────────────────
+    # Global news
     "reuters_tech":     "https://feeds.reuters.com/reuters/technologyNews",
     "guardian_tech":    "https://www.theguardian.com/technology/rss",
     "guardian_media":   "https://www.theguardian.com/media/rss",
     "bbc_tech":         "https://feeds.bbci.co.uk/news/technology/rss.xml",
     "ap_tech":          "https://feeds.apnews.com/rss/apf-technology",
 
-    # ── AI-SPECIFIC ───────────────────────────────────────────────────────────
+    # AI-specific
     "mit_tech":         "https://www.technologyreview.com/feed/",
     "wired_ai":         "https://www.wired.com/feed/tag/artificial-intelligence/latest/rss",
-    "aisnakeoil":       "https://www.aisnakeoil.com/feed",  # AI policy critique
+    "aisnakeoil":       "https://www.aisnakeoil.com/feed",
     "import_ai":        "https://importai.substack.com/feed",
 
-    # ── DEMOCRACY & GOVERNANCE RESEARCH ──────────────────────────────────────
+    # Democracy & governance research
     "freedom_house":    "https://freedomhouse.org/rss.xml",
-    "v_dem":            "https://www.v-dem.net/feed/",      # Varieties of Democracy institute
+    "v_dem":            "https://www.v-dem.net/feed/",
     "carnegie_dem":     "https://carnegieendowment.org/topics/democracy/rss",
     "brookings_gov":    "https://www.brookings.edu/topic/governance-studies/feed/",
-    "oxpol":            "https://blog.politics.ox.ac.uk/feed/",  # Oxford Politics blog
+    "oxpol":            "https://blog.politics.ox.ac.uk/feed/",
 
-    # ── DISINFORMATION & INFORMATION ENVIRONMENT ──────────────────────────────
-    "euvsdisinfo":      "https://euvsdisinfo.eu/feed/",     # EU East StratCom task force
+    # Disinformation & information environment
+    "euvsdisinfo":      "https://euvsdisinfo.eu/feed/",
     "firstdraft":       "https://firstdraftnews.org/feed/",
     "poynter":          "https://www.poynter.org/feed/",
 
-    # ── GDELT TARGETED QUERIES ────────────────────────────────────────────────
+    # GDELT targeted queries
     "gdelt_ai_dem":     "https://api.gdeltproject.org/api/v2/doc/doc?query=AI+democracy&mode=artlist&format=rss",
     "gdelt_ai_elect":   "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence+elections&mode=artlist&format=rss",
     "gdelt_disinfo":    "https://api.gdeltproject.org/api/v2/doc/doc?query=disinformation+AI+politics&mode=artlist&format=rss",
 }
 
 # ── SETTINGS ──────────────────────────────────────────────────────────────────
-ARTICLES_PER_FEED   = 20   # how many articles to pull per feed per run
+ARTICLES_PER_FEED   = 20
 OUTPUT_FILE         = "signals.json"
 MODEL               = "claude-sonnet-4-6"
 MAX_TOKENS          = 600
+FEED_TIMEOUT        = 15    # seconds per feed request
+API_RETRIES         = 3     # number of retry attempts for Claude API calls
+RETRY_BACKOFF       = 5     # seconds between retries (doubles each attempt)
 
 # ── CLASSIFICATION PROMPT ─────────────────────────────────────────────────────
 PROMPT = """
@@ -128,16 +126,8 @@ DOMAIN OPTIONS:
 - power: concentration or distribution of political power
 - multiple: clearly spans several domains
 
-SIGNAL STRENGTH:
-- weak: early or isolated indicator
-- moderate: clear but not yet established trend
-- strong: documented, recurring, or systemic pattern
-
-SIGNAL TYPE:
-- emerging: new and just appearing
-- accelerating: growing faster
-- plateauing: levelling off
-- reversing: previously strong signal now weakening
+SIGNAL STRENGTH: weak / moderate / strong
+SIGNAL TYPE: emerging / accelerating / plateauing / reversing
 
 News item:
 TITLE: {title}
@@ -159,63 +149,98 @@ Respond ONLY with valid JSON — no preamble, no markdown backticks:
 }}
 """
 
+# ── LOAD EXISTING SIGNALS ─────────────────────────────────────────────────────
+def load_existing():
+    """Load existing signals with defensive handling of malformed entries."""
+    try:
+        with open(OUTPUT_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            print("  ⚠ signals.json is not a list — starting fresh")
+            return []
+        # Keep only entries that are dicts with a non-empty url string
+        valid = [s for s in data if isinstance(s, dict) and isinstance(s.get("url"), str) and s["url"]]
+        if len(valid) < len(data):
+            print(f"  ⚠ Dropped {len(data)-len(valid)} malformed entries from existing signals")
+        return valid
+    except FileNotFoundError:
+        return []
+    except json.JSONDecodeError as e:
+        print(f"  ⚠ signals.json is corrupt ({e}) — starting fresh")
+        return []
+
 # ── FETCH ARTICLES ────────────────────────────────────────────────────────────
-def fetch_articles():
+def fetch_articles(existing_urls: set) -> list:
+    """Fetch RSS feeds and return only articles not already in the database."""
     articles = []
     for source, url in RSS_FEEDS.items():
         try:
-            feed = feedparser.parse(url)
+            # Use requests with timeout, then parse the content
+            response = requests.get(url, timeout=FEED_TIMEOUT, headers={"User-Agent": "Mozilla/5.0"})
+            response.raise_for_status()
+            feed = feedparser.parse(response.content)
+            new_count = 0
             for entry in feed.entries[:ARTICLES_PER_FEED]:
+                article_url = entry.get("link", "").strip()
+                if not article_url or article_url in existing_urls:
+                    continue  # skip duplicates before classification
                 articles.append({
                     "source":    source,
-                    "title":     entry.get("title", "").strip(),
+                    "title":     entry.get("title", "").strip()[:300],
                     "summary":   entry.get("summary", "")[:800].strip(),
-                    "url":       entry.get("link", ""),
+                    "url":       article_url,
                     "published": entry.get("published", ""),
                 })
-            print(f"  ✓ {source}: {min(len(feed.entries), ARTICLES_PER_FEED)} articles")
+                new_count += 1
+            print(f"  ✓ {source}: {new_count} new articles")
+        except requests.Timeout:
+            print(f"  ✗ {source}: timed out after {FEED_TIMEOUT}s")
         except Exception as e:
             print(f"  ✗ {source}: {e}")
     return articles
 
 # ── CLASSIFY ONE ARTICLE ──────────────────────────────────────────────────────
-def classify(client, article):
+def classify(client, article) -> dict:
+    """Send article to Claude with retry/backoff on failure."""
     prompt = PROMPT.format(
         title=article["title"],
         source=article["source"],
         summary=article["summary"],
     )
-    try:
-        response = client.messages.create(
-            model=MODEL,
-            max_tokens=MAX_TOKENS,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        raw = response.content[0].text.strip()
-        result = json.loads(raw)
-        return {**article, **result, "scanned_at": datetime.utcnow().isoformat()}
-    except json.JSONDecodeError as e:
-        print(f"  JSON parse error for '{article['title'][:40]}...': {e}")
-        return {**article, "relevant": False, "error": "json_parse_error", "scanned_at": datetime.utcnow().isoformat()}
-    except Exception as e:
-        print(f"  API error for '{article['title'][:40]}...': {e}")
-        return {**article, "relevant": False, "error": str(e), "scanned_at": datetime.utcnow().isoformat()}
+    delay = RETRY_BACKOFF
+    for attempt in range(1, API_RETRIES + 1):
+        try:
+            response = client.messages.create(
+                model=MODEL,
+                max_tokens=MAX_TOKENS,
+                messages=[{"role": "user", "content": prompt}],
+                timeout=30,
+            )
+            raw = response.content[0].text.strip()
+            result = json.loads(raw)
+            # Validate required fields; fill safe defaults if missing
+            result.setdefault("relevant", False)
+            result.setdefault("primary_category", "AMBIGUOUS")
+            result.setdefault("secondary_categories", [])
+            result.setdefault("confidence", 0.0)
+            result.setdefault("rationale", "")
+            result.setdefault("secondary_rationale", "")
+            result.setdefault("finnish_relevance", False)
+            return {**article, **result, "scanned_at": datetime.utcnow().isoformat()}
+        except json.JSONDecodeError:
+            print(f"    JSON parse error (attempt {attempt}/{API_RETRIES})")
+        except Exception as e:
+            print(f"    API error (attempt {attempt}/{API_RETRIES}): {e}")
+        if attempt < API_RETRIES:
+            time.sleep(delay)
+            delay *= 2  # exponential backoff
+    return {**article, "relevant": False, "error": "failed_after_retries", "scanned_at": datetime.utcnow().isoformat()}
 
 # ── SAVE RESULTS ──────────────────────────────────────────────────────────────
-def save(signals):
-    try:
-        with open(OUTPUT_FILE) as f:
-            existing = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        existing = []
-
-    existing_urls = {s["url"] for s in existing}
-    new_signals = [s for s in signals if s["url"] not in existing_urls]
+def save(existing: list, new_signals: list):
     combined = existing + new_signals
-
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(combined, f, ensure_ascii=False, indent=2)
-
     print(f"\n✓ {len(new_signals)} new signals added. Total in database: {len(combined)}")
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -225,20 +250,29 @@ def main():
 
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-    print("── Fetching articles ────────────────────────────────")
-    articles = fetch_articles()
-    print(f"\n{len(articles)} articles fetched total")
+    print("── Loading existing signals ─────────────────────────")
+    existing = load_existing()
+    existing_urls = {s["url"] for s in existing}
+    print(f"  {len(existing)} existing signals, {len(existing_urls)} known URLs")
+
+    print("\n── Fetching articles ────────────────────────────────")
+    articles = fetch_articles(existing_urls)
+    print(f"\n{len(articles)} new articles to classify")
+
+    if not articles:
+        print("Nothing new to classify.")
+        return
 
     print("\n── Classifying ──────────────────────────────────────")
-    classified = []
+    new_signals = []
     for i, article in enumerate(articles, 1):
         print(f"  [{i}/{len(articles)}] {article['title'][:55]}...")
-        classified.append(classify(client, article))
+        result = classify(client, article)
+        if result.get("relevant") is True:
+            new_signals.append(result)
 
-    signals = [c for c in classified if c.get("relevant") is True]
-    print(f"\n{len(signals)} relevant signals identified out of {len(articles)} articles")
-
-    save(signals)
+    print(f"\n{len(new_signals)} relevant signals identified out of {len(articles)} articles")
+    save(existing, new_signals)
 
 if __name__ == "__main__":
     main()
