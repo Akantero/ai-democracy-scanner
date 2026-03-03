@@ -6,10 +6,7 @@
 <title>AI-Democracy Signal Scanner</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
-  :root {
-    --S:#22c55e; --C:#ef4444; --W:#f59e0b; --N:#8b5cf6; --A:#6b7280;
-    --bg:#0f172a; --surface:#1e293b; --border:#334155; --text:#e2e8f0; --muted:#94a3b8;
-  }
+  :root{--S:#22c55e;--C:#ef4444;--W:#f59e0b;--N:#8b5cf6;--A:#6b7280;--bg:#0f172a;--surface:#1e293b;--border:#334155;--text:#e2e8f0;--muted:#94a3b8;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;}
   header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
@@ -18,96 +15,83 @@
   .badge{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:0.25rem 0.75rem;font-size:0.75rem;color:var(--muted);}
   .main{padding:1.5rem 2rem;max-width:1400px;margin:0 auto;}
 
-  /* NAV TABS */
-  .nav{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:1.5rem;}
-  .nav-tab{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:0.6rem 1.2rem;font-size:0.85rem;cursor:pointer;transition:all .15s;margin-bottom:-1px;}
-  .nav-tab:hover{color:var(--text);}
-  .nav-tab.active{color:var(--text);border-bottom-color:var(--text);font-weight:600;}
-  .nav-tab.outlier-tab.active{color:#f472b6;border-bottom-color:#f472b6;}
-  .page{display:none;} .page.active{display:block;}
-
-  /* STATS */
   .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;margin-bottom:1.5rem;}
   @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
   .stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.9rem;text-align:center;}
   .stat-n{font-size:1.6rem;font-weight:800;}
   .stat-label{font-size:0.7rem;color:var(--muted);margin-top:0.2rem;line-height:1.3;}
 
-  /* FILTERS */
+  .nav{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:1.5rem;}
+  .nav-btn{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:0.6rem 1.2rem;font-size:0.85rem;cursor:pointer;transition:all .15s;margin-bottom:-1px;}
+  .nav-btn:hover{color:var(--text);}
+  .nav-btn.active{color:var(--text);border-bottom-color:var(--text);font-weight:600;}
+  .nav-btn.outlier-nav.active{color:#f472b6;border-bottom-color:#f472b6;}
+  .page{display:none;}.page.active{display:block;}
+
   .filters{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center;}
   .filters label{color:var(--muted);font-size:0.8rem;}
   select{background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:0.4rem 0.75rem;font-size:0.82rem;cursor:pointer;}
 
-  /* CATEGORY TABS */
-  .cat-tabs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.25rem;}
-  .tab{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:6px;padding:0.35rem 0.85rem;font-size:0.78rem;cursor:pointer;transition:all .15s;}
-  .tab:hover{color:#fff;border-color:#475569;}
-  .tab.active[data-cat="ALL"]          {background:#334155;border-color:#475569;color:#fff;}
-  .tab.active[data-cat="STRENGTHENS"]  {background:var(--S);border-color:var(--S);color:#fff;}
-  .tab.active[data-cat="COLLAPSE"]     {background:var(--C);border-color:var(--C);color:#fff;}
-  .tab.active[data-cat="WEAKENS"]      {background:var(--W);border-color:var(--W);color:#fff;}
-  .tab.active[data-cat="NEW_DEMOCRACY"]{background:var(--N);border-color:var(--N);color:#fff;}
-  .tab.active[data-cat="AMBIGUOUS"]    {background:var(--A);border-color:var(--A);color:#fff;}
+  .cattabs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+  .ctab{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:6px;padding:0.35rem 0.85rem;font-size:0.78rem;cursor:pointer;transition:all .15s;}
+  .ctab:hover{color:#fff;border-color:#475569;}
+  .ctab.active[data-cat="ALL"]          {background:#334155;border-color:#475569;color:#fff;}
+  .ctab.active[data-cat="STRENGTHENS"]  {background:var(--S);border-color:var(--S);color:#fff;}
+  .ctab.active[data-cat="COLLAPSE"]     {background:var(--C);border-color:var(--C);color:#fff;}
+  .ctab.active[data-cat="WEAKENS"]      {background:var(--W);border-color:var(--W);color:#fff;}
+  .ctab.active[data-cat="NEW_DEMOCRACY"]{background:var(--N);border-color:var(--N);color:#fff;}
+  .ctab.active[data-cat="AMBIGUOUS"]    {background:var(--A);border-color:var(--A);color:#fff;}
 
-  /* SIGNAL CARDS */
-  .signal-list{display:flex;flex-direction:column;gap:0.7rem;max-height:560px;overflow-y:auto;}
-  .signal{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;border-left:3px solid var(--border);}
-  .signal[data-primary="STRENGTHENS"]  {border-left-color:var(--S);}
-  .signal[data-primary="COLLAPSE"]     {border-left-color:var(--C);}
-  .signal[data-primary="WEAKENS"]      {border-left-color:var(--W);}
-  .signal[data-primary="NEW_DEMOCRACY"]{border-left-color:var(--N);}
-  .signal[data-primary="AMBIGUOUS"]    {border-left-color:var(--A);}
-  .signal.wildcard{border-left-color:#f472b6;border-left-width:4px;}
-  .signal-header{display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;}
-  .signal-title{font-size:0.88rem;font-weight:600;line-height:1.35;}
-  .signal-title a{color:var(--text);text-decoration:none;}
-  .signal-title a:hover{text-decoration:underline;}
+  .slist{display:flex;flex-direction:column;gap:0.7rem;max-height:560px;overflow-y:auto;}
+  .sig{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;border-left:3px solid var(--border);}
+  .sig[data-p="STRENGTHENS"]  {border-left-color:var(--S);}
+  .sig[data-p="COLLAPSE"]     {border-left-color:var(--C);}
+  .sig[data-p="WEAKENS"]      {border-left-color:var(--W);}
+  .sig[data-p="NEW_DEMOCRACY"]{border-left-color:var(--N);}
+  .sig[data-p="AMBIGUOUS"]    {border-left-color:var(--A);}
+  .sig.wildcard{border-left-color:#f472b6;border-left-width:4px;}
+  .sig-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;}
+  .sig-title{font-size:0.88rem;font-weight:600;line-height:1.35;}
+  .sig-title a{color:var(--text);text-decoration:none;}
+  .sig-title a:hover{text-decoration:underline;}
   .cats{display:flex;gap:0.3rem;flex-wrap:wrap;flex-shrink:0;}
-  .cat-label{font-size:0.68rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:4px;white-space:nowrap;}
-  .cat-label.secondary{opacity:0.7;font-weight:500;}
+  .cl{font-size:0.68rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:4px;white-space:nowrap;}
+  .cl.sec{opacity:0.7;font-weight:500;}
   .STRENGTHENS  {background:#14532d;color:var(--S);}
   .COLLAPSE     {background:#7f1d1d;color:#fca5a5;}
   .WEAKENS      {background:#78350f;color:#fde68a;}
   .NEW_DEMOCRACY{background:#4c1d95;color:#c4b5fd;}
   .AMBIGUOUS    {background:#1f2937;color:var(--muted);}
-  .break-badge  {background:#4d1d3a;color:#f472b6;font-size:0.65rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:4px;white-space:nowrap;}
-  .signal-meta{display:flex;gap:0.4rem;flex-wrap:wrap;font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;}
+  .break-badge  {background:#4d1d3a;color:#f472b6;font-size:0.65rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:4px;}
+  .sig-meta{display:flex;gap:0.4rem;flex-wrap:wrap;font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;}
   .pill{background:#1e293b;border:1px solid var(--border);border-radius:999px;padding:0.12rem 0.55rem;}
+  .pill.hi{color:#f472b6;border-color:#831843;}
   .pill.strong{color:#fbbf24;border-color:#92400e;}
-  .pill.impact-hi{color:#f472b6;border-color:#831843;}
-  .conf-bar{display:inline-block;width:36px;height:4px;background:var(--border);border-radius:2px;vertical-align:middle;margin-left:4px;position:relative;overflow:hidden;}
-  .conf-fill{position:absolute;left:0;top:0;height:100%;border-radius:2px;}
-  .signal-rationale{font-size:0.79rem;color:var(--muted);line-height:1.5;}
-  .signal-secondary{font-size:0.75rem;color:#64748b;margin-top:0.3rem;font-style:italic;line-height:1.4;}
+  .cbar{display:inline-block;width:36px;height:4px;background:var(--border);border-radius:2px;vertical-align:middle;margin-left:4px;position:relative;overflow:hidden;}
+  .cfill{position:absolute;left:0;top:0;height:100%;border-radius:2px;}
+  .sig-rat{font-size:0.79rem;color:var(--muted);line-height:1.5;}
+  .sig-sec{font-size:0.75rem;color:#64748b;margin-top:0.3rem;font-style:italic;line-height:1.4;}
   .finn-dot{display:inline-block;width:6px;height:6px;background:#38bdf8;border-radius:50%;margin-right:3px;}
 
-  /* CHARTS */
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
   @media(max-width:800px){.grid{grid-template-columns:1fr;}}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
   .card h2{font-size:0.82rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;}
-  .chart-wrap{position:relative;height:210px;}
-  .quad-wrap{position:relative;height:380px;}
-  .matrix-wrap{position:relative;height:420px;}
-  .chart-hint{display:flex;justify-content:space-between;font-size:0.7rem;color:#475569;margin-top:0.5rem;padding:0 0.25rem;}
-
-  /* OUTLIER LEGEND */
-  .outlier-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;color:var(--muted);margin-bottom:1rem;}
-  .outlier-legend span{display:flex;align-items:center;gap:0.35rem;}
+  .cwrap{position:relative;height:210px;}
+  .qwrap{position:relative;height:380px;}
+  .mwrap{position:relative;height:420px;}
+  .hint{display:flex;justify-content:space-between;font-size:0.7rem;color:#475569;margin-top:0.5rem;padding:0 0.25rem;}
+  .oleg{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;color:var(--muted);margin-bottom:1rem;}
+  .oleg span{display:flex;align-items:center;gap:0.35rem;}
   .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
-
   ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:transparent;} ::-webkit-scrollbar-thumb{background:#334155;border-radius:999px;}
 </style>
 </head>
 <body>
 <header>
-  <div>
-    <h1>🔭 AI-Democracy Signal Scanner</h1>
-    <p>Anticipatory signals — tekoälyn vaikutus demokratiaan</p>
-  </div>
+  <div><h1>🔭 AI-Democracy Signal Scanner</h1><p>Anticipatory signals — tekoälyn vaikutus demokratiaan</p></div>
   <span class="badge" id="last-updated">Loading...</span>
 </header>
-
 <div class="main">
 
   <div class="stats">
@@ -115,491 +99,377 @@
     <div class="stat"><div class="stat-n" style="color:var(--N)" id="n-n">0</div><div class="stat-label">Radikaalisti uusi demokratia</div></div>
     <div class="stat"><div class="stat-n" style="color:var(--W)" id="n-w">0</div><div class="stat-label">Demokratia heikentyy</div></div>
     <div class="stat"><div class="stat-n" style="color:var(--C)" id="n-c">0</div><div class="stat-label">Demokratia romahtaa</div></div>
-    <div class="stat"><div class="stat-n" style="color:#f472b6" id="n-outlier">0</div><div class="stat-label">⚡ Wild cards & kriittiset</div></div>
+    <div class="stat"><div class="stat-n" style="color:#f472b6" id="n-out">0</div><div class="stat-label">⚡ Wild cards & kriittiset</div></div>
   </div>
 
-  <!-- PAGE NAV -->
   <div class="nav">
-    <button class="nav-tab active" data-page="feed">Signaalivirta</button>
-    <button class="nav-tab" data-page="matrix">Vaikutus / Todennäköisyys</button>
-    <button class="nav-tab" data-page="scenarios">Skenaariokenttä</button>
-    <button class="nav-tab" data-page="timeline">Aikajana</button>
-    <button class="nav-tab outlier-tab" data-page="outliers">⚡ Outliers</button>
+    <button class="nav-btn active" data-page="feed">Signaalivirta</button>
+    <button class="nav-btn" data-page="matrix">Vaikutus / Todennäköisyys</button>
+    <button class="nav-btn" data-page="scenarios">Skenaariokenttä</button>
+    <button class="nav-btn" data-page="timeline">Aikajana</button>
+    <button class="nav-btn outlier-nav" data-page="outliers">⚡ Outliers</button>
   </div>
 
-  <!-- PAGE: FEED -->
+  <!-- FEED -->
   <div class="page active" id="page-feed">
     <div class="filters">
       <label>Domain:</label>
-      <select id="domain-filter">
-        <option value="ALL">Kaikki</option>
-        <option value="epistemic">Episteeminen</option>
-        <option value="procedural">Proseduraalinen</option>
-        <option value="institutional">Institutionaalinen</option>
-        <option value="participatory">Osallistuminen</option>
-        <option value="power">Valta</option>
-      </select>
+      <select id="dom-f"><option value="ALL">Kaikki</option><option value="epistemic">Episteeminen</option><option value="procedural">Proseduraalinen</option><option value="institutional">Institutionaalinen</option><option value="participatory">Osallistuminen</option><option value="power">Valta</option></select>
       <label style="margin-left:0.5rem">Vahvuus:</label>
-      <select id="strength-filter">
-        <option value="ALL">Kaikki</option>
-        <option value="strong">Vahva</option>
-        <option value="moderate">Kohtalainen</option>
-        <option value="weak">Heikko</option>
-      </select>
-      <label style="margin-left:0.75rem">
-        <input type="checkbox" id="finn-only" style="margin-right:4px">
-        <span class="finn-dot"></span>Suomi-relevanssi
-      </label>
+      <select id="str-f"><option value="ALL">Kaikki</option><option value="strong">Vahva</option><option value="moderate">Kohtalainen</option><option value="weak">Heikko</option></select>
+      <label style="margin-left:0.75rem"><input type="checkbox" id="fi-f" style="margin-right:4px"><span class="finn-dot"></span>Suomi-relevanssi</label>
     </div>
-    <div class="cat-tabs">
-      <button class="tab active" data-cat="ALL">Kaikki</button>
-      <button class="tab" data-cat="STRENGTHENS">Vahvistuu</button>
-      <button class="tab" data-cat="NEW_DEMOCRACY">Uusi demokratia</button>
-      <button class="tab" data-cat="WEAKENS">Heikentyy</button>
-      <button class="tab" data-cat="COLLAPSE">Romahtaa</button>
-      <button class="tab" data-cat="AMBIGUOUS">Monitulkintainen</button>
+    <div class="cattabs" id="feed-tabs">
+      <button class="ctab active" data-cat="ALL">Kaikki</button>
+      <button class="ctab" data-cat="STRENGTHENS">Vahvistuu</button>
+      <button class="ctab" data-cat="NEW_DEMOCRACY">Uusi demokratia</button>
+      <button class="ctab" data-cat="WEAKENS">Heikentyy</button>
+      <button class="ctab" data-cat="COLLAPSE">Romahtaa</button>
+      <button class="ctab" data-cat="AMBIGUOUS">Monitulkintainen</button>
     </div>
-    <div class="signal-list" id="signal-list"></div>
+    <div class="slist" id="feed-list"></div>
   </div>
 
-  <!-- PAGE: IMPACT / LIKELIHOOD MATRIX -->
+  <!-- MATRIX -->
   <div class="page" id="page-matrix">
     <div class="card">
       <h2>Vaikutus vs. Todennäköisyys — Horizon Scanning Matrix</h2>
-      <div class="outlier-legend">
+      <div class="oleg">
         <span><span class="dot" style="background:#f472b6"></span>Wild card (korkea vaikutus, matala tod.näk.)</span>
         <span><span class="dot" style="background:#ef4444"></span>Kriittinen riski (korkea vaikutus, korkea tod.näk.)</span>
-        <span><span class="dot" style="background:#f59e0b"></span>Heikko signaali (matala tod.näk., rakenteellinen murros)</span>
-        <span><span class="dot" style="background:#6b7280"></span>Taustamelu</span>
+        <span><span class="dot" style="background:#f59e0b"></span>Heikko signaali (rakenteellinen murros)</span>
       </div>
-      <div class="matrix-wrap"><canvas id="matrix-chart"></canvas></div>
-      <div class="chart-hint">
-        <span>← Epätodennäköinen</span>
-        <span style="font-style:italic">Koko = signaalin vahvuus · Vie hiiri pisteen päälle</span>
-        <span>Todennäköinen →</span>
-      </div>
+      <div class="mwrap"><canvas id="matrix-chart"></canvas></div>
+      <div class="hint"><span>← Epätodennäköinen</span><span style="font-style:italic">Koko = signaalin vahvuus · Vie hiiri pisteen päälle</span><span>Todennäköinen →</span></div>
     </div>
   </div>
 
-  <!-- PAGE: SCENARIO QUADRANT -->
+  <!-- SCENARIOS -->
   <div class="page" id="page-scenarios">
-    <div class="card">
+    <div class="card" style="margin-bottom:1.5rem">
       <h2>Skenaariokenttä</h2>
-      <div class="quad-wrap"><canvas id="quadrant-chart"></canvas></div>
-      <div class="chart-hint">
-        <span>← Nykyiset instituutiot</span>
-        <span style="font-style:italic">Koko = vahvuus · Vie hiiri pisteen päälle</span>
-        <span>Radikaalisti uusi →</span>
-      </div>
+      <div class="qwrap"><canvas id="quad-chart"></canvas></div>
+      <div class="hint"><span>← Nykyiset instituutiot</span><span style="font-style:italic">Koko = vahvuus · Vie hiiri pisteen päälle</span><span>Radikaalisti uusi →</span></div>
     </div>
-    <div class="grid" style="margin-top:1.5rem">
-      <div class="card">
-        <h2>Jakauma toimialueittain</h2>
-        <div class="chart-wrap"><canvas id="domain-chart"></canvas></div>
-      </div>
-      <div class="card">
-        <h2>Rakenteelliset murrokset kategorioittain</h2>
-        <div class="chart-wrap"><canvas id="break-chart"></canvas></div>
-      </div>
+    <div class="grid">
+      <div class="card"><h2>Jakauma toimialueittain</h2><div class="cwrap"><canvas id="dom-chart"></canvas></div></div>
+      <div class="card"><h2>Rakenteelliset murrokset kategorioittain</h2><div class="cwrap"><canvas id="break-chart"></canvas></div></div>
     </div>
   </div>
 
-  <!-- PAGE: TIMELINE -->
+  <!-- TIMELINE -->
   <div class="page" id="page-timeline">
-    <div class="card">
-      <h2>Aikajana — signaalit viikottain</h2>
-      <div style="position:relative;height:320px"><canvas id="timeline-chart"></canvas></div>
-    </div>
+    <div class="card"><h2>Aikajana — signaalit viikottain</h2><div style="position:relative;height:320px"><canvas id="tl-chart"></canvas></div></div>
   </div>
 
-  <!-- PAGE: OUTLIERS -->
+  <!-- OUTLIERS -->
   <div class="page" id="page-outliers">
     <div style="background:#1a0a12;border:1px solid #831843;border-radius:10px;padding:1.25rem;margin-bottom:1.25rem;">
       <h2 style="color:#f472b6;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">⚡ Outlier-signaalit</h2>
-      <p style="font-size:0.8rem;color:#94a3b8;line-height:1.6">
-        Tämä näkymä näyttää signaalit, joilla on korkea vaikutuspotentiaali (≥4) TAI matala todennäköisyys yhdistettynä rakenteelliseen murrokseen.
-        Nämä ovat <strong style="color:#f9a8d4">wild cardit</strong> (suuri vaikutus, epätodennäköinen) ja
-        <strong style="color:#fca5a5">kriittiset riskit</strong> (suuri vaikutus, jo todennäköinen) —
-        juuri ne radikaalit esimerkit uudesta demokratiasta ja romahduksesta, joita etsit.
-      </p>
+      <p style="font-size:0.8rem;color:#94a3b8;line-height:1.6">Signaalit joilla on korkea vaikutuspotentiaali (≥4) TAI matala todennäköisyys yhdistettynä rakenteelliseen murrokseen. Nämä ovat <strong style="color:#f9a8d4">wild cardit</strong> ja <strong style="color:#fca5a5">kriittiset riskit</strong>.</p>
     </div>
-    <div class="cat-tabs">
-      <button class="tab active" data-cat="ALL" data-scope="outlier">Kaikki</button>
-      <button class="tab" data-cat="STRENGTHENS" data-scope="outlier">Vahvistuu</button>
-      <button class="tab" data-cat="NEW_DEMOCRACY" data-scope="outlier">Uusi demokratia</button>
-      <button class="tab" data-cat="WEAKENS" data-scope="outlier">Heikentyy</button>
-      <button class="tab" data-cat="COLLAPSE" data-scope="outlier">Romahtaa</button>
+    <div class="cattabs" id="out-tabs">
+      <button class="ctab active" data-cat="ALL">Kaikki</button>
+      <button class="ctab" data-cat="STRENGTHENS">Vahvistuu</button>
+      <button class="ctab" data-cat="NEW_DEMOCRACY">Uusi demokratia</button>
+      <button class="ctab" data-cat="WEAKENS">Heikentyy</button>
+      <button class="ctab" data-cat="COLLAPSE">Romahtaa</button>
     </div>
-    <div class="signal-list" id="outlier-list"></div>
+    <div class="slist" id="out-list"></div>
   </div>
 
 </div>
-
 <script>
 // ── CONSTANTS ─────────────────────────────────────────────────────────────
-const CAT_LABELS = {STRENGTHENS:"Vahvistuu",NEW_DEMOCRACY:"Uusi demokratia",WEAKENS:"Heikentyy",COLLAPSE:"Romahtaa",AMBIGUOUS:"Monitulkintainen"};
-const CAT_COLORS = {STRENGTHENS:"#22c55e",NEW_DEMOCRACY:"#8b5cf6",WEAKENS:"#f59e0b",COLLAPSE:"#ef4444",AMBIGUOUS:"#6b7280"};
-const QUAD_POS   = {STRENGTHENS:{x:-0.5,y:0.5},NEW_DEMOCRACY:{x:0.5,y:0.5},WEAKENS:{x:-0.5,y:-0.5},COLLAPSE:{x:0.5,y:-0.5},AMBIGUOUS:{x:0,y:0}};
-const STR_SIZE   = {weak:5,moderate:9,strong:14};
-const SAFE_CATS  = new Set(["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"]);
-const SAFE_DOMS  = new Set(["epistemic","procedural","institutional","participatory","power","multiple"]);
-const SAFE_STRS  = new Set(["weak","moderate","strong"]);
-const SAFE_TYPES = new Set(["emerging","accelerating","plateauing","reversing"]);
+const CL={STRENGTHENS:"Vahvistuu",NEW_DEMOCRACY:"Uusi demokratia",WEAKENS:"Heikentyy",COLLAPSE:"Romahtaa",AMBIGUOUS:"Monitulkintainen"};
+const CC={STRENGTHENS:"#22c55e",NEW_DEMOCRACY:"#8b5cf6",WEAKENS:"#f59e0b",COLLAPSE:"#ef4444",AMBIGUOUS:"#6b7280"};
+const QP={STRENGTHENS:{x:-0.5,y:0.5},NEW_DEMOCRACY:{x:0.5,y:0.5},WEAKENS:{x:-0.5,y:-0.5},COLLAPSE:{x:0.5,y:-0.5},AMBIGUOUS:{x:0,y:0}};
+const SS={weak:5,moderate:9,strong:14};
+const VCATS=new Set(["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"]);
+const VDOMS=new Set(["epistemic","procedural","institutional","participatory","power","multiple"]);
+const VSTRS=new Set(["weak","moderate","strong"]);
+const VTYPE=new Set(["emerging","accelerating","plateauing","reversing"]);
 
-// ── SAFE DOM HELPERS ──────────────────────────────────────────────────────
-function txt(s){ return document.createTextNode(String(s||"")); }
-function el(tag,attrs,children){
+// ── DOM HELPERS ───────────────────────────────────────────────────────────
+const T=s=>document.createTextNode(String(s||""));
+function E(tag,attrs,ch){
   const n=document.createElement(tag);
-  if(attrs) Object.entries(attrs).forEach(([k,v])=>{ if(v!=null) n.setAttribute(k,v); });
-  if(children)(Array.isArray(children)?children:[children]).forEach(c=>{
-    if(c==null) return;
-    n.appendChild(typeof c==="string"?txt(c):c);
-  });
+  if(attrs) Object.entries(attrs).forEach(([k,v])=>{if(v!=null)n.setAttribute(k,v);});
+  if(ch)(Array.isArray(ch)?ch:[ch]).forEach(c=>{if(c!=null)n.appendChild(typeof c==="string"?T(c):c);});
   return n;
 }
-function safeUrl(raw){
-  try{ const u=new URL(String(raw||"")); return(u.protocol==="http:"||u.protocol==="https:")?u.href:null; }
-  catch{ return null; }
-}
-function sanitize(s){
-  return {
-    title:               String(s.title||"").slice(0,300),
-    url:                 safeUrl(s.url),
-    source:              String(s.source||"").replace(/[^a-z0-9_\- ]/gi,"").slice(0,60),
-    primary_category:    SAFE_CATS.has(s.primary_category)?s.primary_category:"AMBIGUOUS",
-    secondary_categories:Array.isArray(s.secondary_categories)?s.secondary_categories.filter(c=>SAFE_CATS.has(c)):[],
-    signal_strength:     SAFE_STRS.has(s.signal_strength)?s.signal_strength:"weak",
-    signal_type:         SAFE_TYPES.has(s.signal_type)?s.signal_type:"emerging",
-    domain:              SAFE_DOMS.has(s.domain)?s.domain:"multiple",
-    impact:              Math.min(5,Math.max(1,parseInt(s.impact)||1)),
-    likelihood:          Math.min(5,Math.max(1,parseInt(s.likelihood)||1)),
-    structural_break:    s.structural_break===true,
-    confidence:          Math.min(1,Math.max(0,parseFloat(s.confidence)||0)),
-    rationale:           String(s.rationale||"").slice(0,600),
-    secondary_rationale: String(s.secondary_rationale||"").slice(0,400),
-    finnish_relevance:   s.finnish_relevance===true,
-    published:           s.published||s.scanned_at||"",
-    scanned_at:          s.scanned_at||"",
-  };
-}
+function safeUrl(r){try{const u=new URL(String(r||""));return(u.protocol==="http:"||u.protocol==="https:")?u.href:null;}catch{return null;}}
+function san(s){return{
+  title:String(s.title||"").slice(0,300),
+  url:safeUrl(s.url),
+  source:String(s.source||"").replace(/[^a-z0-9_\- ]/gi,"").slice(0,60),
+  primary_category:VCATS.has(s.primary_category)?s.primary_category:"AMBIGUOUS",
+  secondary_categories:Array.isArray(s.secondary_categories)?s.secondary_categories.filter(c=>VCATS.has(c)):[],
+  signal_strength:VSTRS.has(s.signal_strength)?s.signal_strength:"weak",
+  signal_type:VTYPE.has(s.signal_type)?s.signal_type:"emerging",
+  domain:VDOMS.has(s.domain)?s.domain:"multiple",
+  impact:Math.min(5,Math.max(1,parseInt(s.impact)||1)),
+  likelihood:Math.min(5,Math.max(1,parseInt(s.likelihood)||1)),
+  structural_break:s.structural_break===true,
+  confidence:Math.min(1,Math.max(0,parseFloat(s.confidence)||0)),
+  rationale:String(s.rationale||"").slice(0,600),
+  secondary_rationale:String(s.secondary_rationale||"").slice(0,400),
+  finnish_relevance:s.finnish_relevance===true,
+  published:s.published||s.scanned_at||"",
+  scanned_at:s.scanned_at||"",
+};}
 
-// Outlier = high impact OR (low likelihood + structural break)
-function isOutlier(s){ return s.impact>=4||(s.likelihood<=2&&s.structural_break); }
-
-function outlierColor(s){
-  if(s.impact>=4&&s.likelihood<=2) return "#f472b6"; // wild card
-  if(s.impact>=4&&s.likelihood>=4) return "#ef4444"; // critical risk
-  if(s.structural_break)           return "#f59e0b"; // weak signal / break
-  return "#6b7280";
-}
+const isOut=s=>s.impact>=4||(s.likelihood<=2&&s.structural_break);
 
 // ── STATE ─────────────────────────────────────────────────────────────────
-let signals=[], activeFeedTab="ALL", activeOutlierTab="ALL", activePage="feed";
-let quadChart=null,tlChart=null,domChart=null,matrixChart=null,breakChart=null;
+let signals=[], feedCat="ALL", outCat="ALL", curPage="feed";
+let charts={quad:null,tl:null,dom:null,mat:null,brk:null};
 
-async function loadSignals(){
-  try{ const r=await fetch("signals.json"); if(r.ok){ const raw=await r.json(); if(Array.isArray(raw)) signals=raw.map(sanitize); } }catch(e){}
-  render();
+async function load(){
+  try{const r=await fetch("signals.json");if(r.ok){const d=await r.json();if(Array.isArray(d))signals=d.map(san);}}catch(e){}
+  renderAll();
 }
 
-// ── FILTER ────────────────────────────────────────────────────────────────
-function allCats(s){ return [s.primary_category,...s.secondary_categories]; }
-
-function filtered(){
-  const dom=document.getElementById("domain-filter").value;
-  const str=document.getElementById("strength-filter").value;
-  const fi=document.getElementById("finn-only").checked;
+// ── FILTERS ───────────────────────────────────────────────────────────────
+function allC(s){return[s.primary_category,...s.secondary_categories];}
+function getFeed(){
+  const dom=document.getElementById("dom-f").value;
+  const str=document.getElementById("str-f").value;
+  const fi=document.getElementById("fi-f").checked;
   return signals.filter(s=>{
-    if(activeFeedTab!=="ALL"&&!allCats(s).includes(activeFeedTab)) return false;
+    if(feedCat!=="ALL"&&!allC(s).includes(feedCat)) return false;
     if(dom!=="ALL"&&s.domain!==dom) return false;
     if(str!=="ALL"&&s.signal_strength!==str) return false;
     if(fi&&!s.finnish_relevance) return false;
     return true;
   });
 }
+function getOut(){return signals.filter(s=>isOut(s)&&(outCat==="ALL"||allC(s).includes(outCat)));}
 
-function filteredOutliers(){
-  return signals.filter(s=>isOutlier(s)&&(activeOutlierTab==="ALL"||allCats(s).includes(activeOutlierTab)));
-}
-
-// ── BUILD SIGNAL CARD ─────────────────────────────────────────────────────
-function buildCard(s, isOutlierView=false){
+// ── CARD BUILDER ──────────────────────────────────────────────────────────
+function mkCard(s,outlierView){
   const sec=s.secondary_categories.filter(c=>c!==s.primary_category);
   const pct=Math.round(s.confidence*100);
-  const color=CAT_COLORS[s.primary_category]||"#475569";
-  const wildcard=isOutlier(s);
+  const col=CC[s.primary_category]||"#475569";
+  const wild=isOut(s);
 
-  const titleContent=s.url
-    ? el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer"},s.title)
-    : el("span",null,s.title);
+  const ti=s.url?E("a",{href:s.url,target:"_blank",rel:"noopener noreferrer"},s.title):E("span",null,s.title);
+  const cats=E("div",{class:"cats"});
+  cats.appendChild(E("span",{class:`cl ${s.primary_category}`},CL[s.primary_category]));
+  sec.forEach(c=>cats.appendChild(E("span",{class:`cl sec ${c}`},CL[c])));
+  if(s.structural_break) cats.appendChild(E("span",{class:"break-badge"},"⚡ murros"));
 
-  const cats=el("div",{class:"cats"});
-  cats.appendChild(el("span",{class:`cat-label ${s.primary_category}`},CAT_LABELS[s.primary_category]));
-  sec.forEach(c=>cats.appendChild(el("span",{class:`cat-label secondary ${c}`},CAT_LABELS[c])));
-  if(s.structural_break) cats.appendChild(el("span",{class:"break-badge"},"⚡ murros"));
+  const meta=E("div",{class:"sig-meta"});
+  meta.appendChild(E("span",{class:"pill"},s.source.replace(/_/g," ")));
+  meta.appendChild(E("span",{class:"pill"},s.domain));
+  meta.appendChild(E("span",{class:`pill${s.signal_strength==="strong"?" strong":""}`},s.signal_strength));
+  meta.appendChild(E("span",{class:`pill${s.impact>=4?" hi":""}`,title:"Vaikutus 1-5"},`▲${s.impact}`));
+  meta.appendChild(E("span",{class:"pill",title:"Todennäköisyys 1-5"},`◎${s.likelihood}`));
 
-  const meta=el("div",{class:"signal-meta"});
-  meta.appendChild(el("span",{class:"pill"},s.source.replace(/_/g," ")));
-  meta.appendChild(el("span",{class:"pill"},s.domain));
-  meta.appendChild(el("span",{class:`pill${s.signal_strength==="strong"?" strong":""}`},s.signal_strength));
-
-  // Impact / likelihood pills
-  const impCls=s.impact>=4?"pill impact-hi":"pill";
-  meta.appendChild(el("span",{class:impCls,title:"Vaikutus 1-5"},`▲${s.impact}`));
-  meta.appendChild(el("span",{class:"pill",title:"Todennäköisyys 1-5"},`◎${s.likelihood}`));
-
-  const confWrap=el("span",{title:`Confidence ${pct}%`});
-  const bar=el("span",{class:"conf-bar"});
-  bar.appendChild(el("span",{class:"conf-fill",style:`width:${pct}%;background:${color}`}));
-  confWrap.appendChild(bar);
-  confWrap.appendChild(el("span",{style:"font-size:0.7rem;color:#64748b"},` ${pct}%`));
-  meta.appendChild(confWrap);
+  const cb=E("span",{title:`Confidence ${pct}%`});
+  const bar=E("span",{class:"cbar"});
+  bar.appendChild(E("span",{class:"cfill",style:`width:${pct}%;background:${col}`}));
+  cb.appendChild(bar);
+  cb.appendChild(E("span",{style:"font-size:0.7rem;color:#64748b"},` ${pct}%`));
+  meta.appendChild(cb);
 
   if(s.finnish_relevance){
-    const fi=el("span",{class:"pill",style:"color:#38bdf8;border-color:#0c4a6e"});
-    fi.appendChild(el("span",{class:"finn-dot"}));
-    fi.appendChild(txt("FI"));
+    const fi=E("span",{class:"pill",style:"color:#38bdf8;border-color:#0c4a6e"});
+    fi.appendChild(E("span",{class:"finn-dot"}));fi.appendChild(T("FI"));
     meta.appendChild(fi);
   }
-  const dateStr=s.published||s.scanned_at;
-  if(dateStr){ try{ meta.appendChild(el("span",null,new Date(dateStr).toLocaleDateString("fi-FI"))); }catch{} }
+  const ds=s.published||s.scanned_at;
+  if(ds){try{meta.appendChild(E("span",null,new Date(ds).toLocaleDateString("fi-FI")));}catch{}}
 
-  const header=el("div",{class:"signal-header"});
-  header.appendChild(el("div",{class:"signal-title"},titleContent));
-  header.appendChild(cats);
+  const hd=E("div",{class:"sig-hd"});
+  hd.appendChild(E("div",{class:"sig-title"},ti));
+  hd.appendChild(cats);
 
-  const cardClass=`signal${wildcard&&isOutlierView?" wildcard":""}`;
-  const card=el("div",{class:cardClass,"data-primary":s.primary_category});
-  card.appendChild(header);
-  card.appendChild(meta);
-  card.appendChild(el("div",{class:"signal-rationale"},s.rationale));
-  if(s.secondary_rationale) card.appendChild(el("div",{class:"signal-secondary"},`↳ ${s.secondary_rationale}`));
+  const card=E("div",{class:`sig${outlierView&&wild?" wildcard":""}`, "data-p":s.primary_category});
+  card.appendChild(hd);card.appendChild(meta);
+  card.appendChild(E("div",{class:"sig-rat"},s.rationale));
+  if(s.secondary_rationale) card.appendChild(E("div",{class:"sig-sec"},`↳ ${s.secondary_rationale}`));
   return card;
 }
 
-// ── RENDER SIGNAL LIST ────────────────────────────────────────────────────
-function renderList(containerId, data, isOutlierView=false){
-  const el2=document.getElementById(containerId);
-  while(el2.firstChild) el2.removeChild(el2.firstChild);
-  if(!data.length){ el2.appendChild(el("p",{style:"color:var(--muted);text-align:center;padding:2rem"},"Ei signaaleja.")); return; }
-  data.forEach(s=>el2.appendChild(buildCard(s,isOutlierView)));
+function fillList(id,data,outlierView){
+  const el=document.getElementById(id);
+  while(el.firstChild)el.removeChild(el.firstChild);
+  if(!data.length){el.appendChild(E("p",{style:"color:var(--muted);text-align:center;padding:2rem"},"Ei signaaleja."));return;}
+  data.forEach(s=>el.appendChild(mkCard(s,outlierView)));
 }
 
-// ── RENDER STATS ──────────────────────────────────────────────────────────
+// ── STATS ─────────────────────────────────────────────────────────────────
 function renderStats(){
-  const count=cat=>signals.filter(s=>s.primary_category===cat).length;
-  document.getElementById("n-s").textContent=count("STRENGTHENS");
-  document.getElementById("n-n").textContent=count("NEW_DEMOCRACY");
-  document.getElementById("n-w").textContent=count("WEAKENS");
-  document.getElementById("n-c").textContent=count("COLLAPSE");
-  document.getElementById("n-outlier").textContent=signals.filter(isOutlier).length;
+  const c=cat=>signals.filter(s=>s.primary_category===cat).length;
+  document.getElementById("n-s").textContent=c("STRENGTHENS");
+  document.getElementById("n-n").textContent=c("NEW_DEMOCRACY");
+  document.getElementById("n-w").textContent=c("WEAKENS");
+  document.getElementById("n-c").textContent=c("COLLAPSE");
+  document.getElementById("n-out").textContent=signals.filter(isOut).length;
   const dates=signals.map(s=>s.scanned_at||s.published).filter(Boolean).sort();
   const last=dates[dates.length-1];
-  document.getElementById("last-updated").textContent=last
-    ?`Viimeksi skannattu: ${new Date(last).toLocaleDateString("fi-FI")}`:"Ei dataa";
+  document.getElementById("last-updated").textContent=last?`Viimeksi skannattu: ${new Date(last).toLocaleDateString("fi-FI")}`:"Ei dataa";
 }
 
-// ── IMPACT / LIKELIHOOD MATRIX ────────────────────────────────────────────
-function renderMatrix(){
-  const cats=["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"];
-  const datasets=cats.map(cat=>({
-    label:CAT_LABELS[cat],
-    data:signals.filter(s=>s.primary_category===cat).map(s=>({
-      x:s.likelihood+(Math.random()-.5)*.3,
-      y:s.impact+(Math.random()-.5)*.3,
-      r:STR_SIZE[s.signal_strength]||6,
-      title:s.title,
-      isOutlier:isOutlier(s),
-      oColor:outlierColor(s),
-    })),
-    backgroundColor:CAT_COLORS[cat]+"99",
-    borderColor:CAT_COLORS[cat],
-    borderWidth:1,
-  }));
+// ── CHARTS ────────────────────────────────────────────────────────────────
+function destroyChart(key){if(charts[key]){charts[key].destroy();charts[key]=null;}}
 
-  if(matrixChart){matrixChart.destroy();matrixChart=null;}
-  matrixChart=new Chart(document.getElementById("matrix-chart").getContext("2d"),{
-    type:"bubble",data:{datasets},
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{
-        legend:{labels:{color:"#94a3b8",boxWidth:12}},
-        tooltip:{callbacks:{title:()=>"",label:i=>{
-          const t=String(i.raw.title||"");
-          return[t.length>68?t.slice(0,68)+"…":t,`Vaikutus: ${Math.round(i.raw.y)} · Todennäköisyys: ${Math.round(i.raw.x)}`];
-        }}}
-      },
-      scales:{
-        x:{min:0.5,max:5.5,title:{display:true,text:"Todennäköisyys →",color:"#64748b"},
-           ticks:{color:"#64748b",stepSize:1,callback:v=>["","Erittäin matala","Matala","Kohtalainen","Korkea","Erittäin korkea"][v]||""},
-           grid:{color:"#1e293b"},border:{color:"#334155"}},
-        y:{min:0.5,max:5.5,title:{display:true,text:"Vaikutus →",color:"#64748b"},
-           ticks:{color:"#64748b",stepSize:1,callback:v=>["","Marginaalinen","Kohtalainen","Merkittävä","Suuri","Sivilisatorinen"][v]||""},
-           grid:{color:"#1e293b"},border:{color:"#334155"}},
-      }
-    },
-    plugins:[{
-      id:"matrixZones",
-      afterDraw(chart){
-        const {ctx,chartArea:{left,right,top,bottom,width,height}}=chart;
-        const cx=left+width*0.6, cy=top+height*0.4; // approx. impact=4, likelihood=3.5 boundary
-        ctx.save();
-        ctx.strokeStyle="#334155";ctx.lineWidth=1;ctx.setLineDash([4,4]);
-        ctx.beginPath();ctx.moveTo(cx,top);ctx.lineTo(cx,bottom);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(left,cy);ctx.lineTo(right,cy);ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.font="600 10px system-ui";ctx.fillStyle="#334155";
-        ctx.textAlign="left"; ctx.fillText("WILD CARDS",left+6,top+14);
-        ctx.textAlign="right";ctx.fillText("KRIITTISET RISKIT",right-6,top+14);
-        ctx.textAlign="left"; ctx.fillText("heikot signaalit",left+6,bottom-6);
-        ctx.textAlign="right";ctx.fillText("taustamelu",right-6,bottom-6);
-        ctx.restore();
-      }
-    }]
-  });
-}
-
-// ── SCENARIO QUADRANT ─────────────────────────────────────────────────────
-const quadPlugin={id:"quadLines",afterDraw(chart){
-  const {ctx,chartArea:{left,right,top,bottom,width,height}}=chart;
+const quadPlugin={id:"qlines",afterDraw(chart){
+  const{ctx,chartArea:{left,right,top,bottom,width,height}}=chart;
   const cx=left+width/2,cy=top+height/2;
-  ctx.save();
-  ctx.strokeStyle="#334155";ctx.lineWidth=1;ctx.setLineDash([4,4]);
+  ctx.save();ctx.strokeStyle="#334155";ctx.lineWidth=1;ctx.setLineDash([4,4]);
   ctx.beginPath();ctx.moveTo(cx,top+4);ctx.lineTo(cx,bottom-4);ctx.stroke();
   ctx.beginPath();ctx.moveTo(left+4,cy);ctx.lineTo(right-4,cy);ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.font="600 10px system-ui";ctx.fillStyle="#475569";ctx.textAlign="center";
-  ctx.fillText("Vahvistuu ▲",cx,top+14);
-  ctx.fillText("▼ Heikentyy / romahtaa",cx,bottom-4);
+  ctx.setLineDash([]);ctx.font="600 10px system-ui";ctx.fillStyle="#475569";ctx.textAlign="center";
+  ctx.fillText("Vahvistuu ▲",cx,top+14);ctx.fillText("▼ Heikentyy / romahtaa",cx,bottom-4);
   ctx.save();ctx.translate(left+12,cy);ctx.rotate(-Math.PI/2);ctx.fillText("◄ Nykyiset",0,0);ctx.restore();
-  ctx.save();ctx.translate(right-12,cy);ctx.rotate(Math.PI/2);ctx.fillText("◄ Uusi demokratia",0,0);ctx.restore();
+  ctx.save();ctx.translate(right-12,cy);ctx.rotate(Math.PI/2);ctx.fillText("◄ Radikaalisti uusi",0,0);ctx.restore();
   ctx.restore();
 }};
 
-function renderQuadrant(){
+const matPlugin={id:"mzones",afterDraw(chart){
+  const{ctx,chartArea:{left,right,top,bottom,width,height}}=chart;
+  const cx=left+width*0.6,cy=top+height*0.4;
+  ctx.save();ctx.strokeStyle="#334155";ctx.lineWidth=1;ctx.setLineDash([4,4]);
+  ctx.beginPath();ctx.moveTo(cx,top);ctx.lineTo(cx,bottom);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(left,cy);ctx.lineTo(right,cy);ctx.stroke();
+  ctx.setLineDash([]);ctx.font="600 10px system-ui";ctx.fillStyle="#334155";
+  ctx.textAlign="left";ctx.fillText("WILD CARDS",left+6,top+14);
+  ctx.textAlign="right";ctx.fillText("KRIITTISET RISKIT",right-6,top+14);
+  ctx.textAlign="left";ctx.fillText("heikot signaalit",left+6,bottom-6);
+  ctx.textAlign="right";ctx.fillText("taustamelu",right-6,bottom-6);
+  ctx.restore();
+}};
+
+function renderMatrix(){
+  destroyChart("mat");
   const cats=["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"];
   const datasets=cats.map(cat=>({
-    label:CAT_LABELS[cat],
-    data:signals.filter(s=>s.primary_category===cat).map(s=>{
-      const base=QUAD_POS[cat]||{x:0,y:0};
-      return{x:base.x+(Math.random()-.5)*.75,y:base.y+(Math.random()-.5)*.75,r:STR_SIZE[s.signal_strength]||6,title:s.title};
-    }),
-    backgroundColor:CAT_COLORS[cat]+"99",borderColor:CAT_COLORS[cat],borderWidth:1,
+    label:CL[cat],
+    data:signals.filter(s=>s.primary_category===cat).map(s=>({
+      x:s.likelihood+(Math.random()-.5)*.3,y:s.impact+(Math.random()-.5)*.3,
+      r:SS[s.signal_strength]||6,title:s.title
+    })),
+    backgroundColor:CC[cat]+"99",borderColor:CC[cat],borderWidth:1,
   }));
-  if(quadChart){quadChart.destroy();quadChart=null;}
-  quadChart=new Chart(document.getElementById("quadrant-chart").getContext("2d"),{
+  charts.mat=new Chart(document.getElementById("matrix-chart").getContext("2d"),{
     type:"bubble",data:{datasets},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{labels:{color:"#94a3b8",boxWidth:12}},
-        tooltip:{callbacks:{title:()=>"",label:i=>{const t=String(i.raw.title||"");return t.length>72?t.slice(0,72)+"…":t;}}}},
-      scales:{x:{min:-1,max:1,grid:{color:"#1e293b"},ticks:{display:false},border:{color:"#334155"}},
-              y:{min:-1,max:1,grid:{color:"#1e293b"},ticks:{display:false},border:{color:"#334155"}}}},
+        tooltip:{callbacks:{title:()=>"",label:i=>{const t=String(i.raw.title||"");return[t.length>68?t.slice(0,68)+"…":t,`▲${Math.round(i.raw.y)} ◎${Math.round(i.raw.x)}`];}}}},
+      scales:{
+        x:{min:0.5,max:5.5,title:{display:true,text:"Todennäköisyys →",color:"#64748b"},ticks:{color:"#64748b",stepSize:1,callback:v=>["","Erittäin matala","Matala","Kohtalainen","Korkea","Erittäin korkea"][v]||""},grid:{color:"#1e293b"},border:{color:"#334155"}},
+        y:{min:0.5,max:5.5,title:{display:true,text:"Vaikutus →",color:"#64748b"},ticks:{color:"#64748b",stepSize:1,callback:v=>["","Marginaalinen","Kohtalainen","Merkittävä","Suuri","Sivilisatorinen"][v]||""},grid:{color:"#1e293b"},border:{color:"#334155"}},
+      }
+    },plugins:[matPlugin]
+  });
+}
+
+function renderQuad(){
+  destroyChart("quad");
+  const cats=["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE","AMBIGUOUS"];
+  const datasets=cats.map(cat=>({
+    label:CL[cat],
+    data:signals.filter(s=>s.primary_category===cat).map(s=>{const b=QP[cat]||{x:0,y:0};return{x:b.x+(Math.random()-.5)*.75,y:b.y+(Math.random()-.5)*.75,r:SS[s.signal_strength]||6,title:s.title};}),
+    backgroundColor:CC[cat]+"99",borderColor:CC[cat],borderWidth:1,
+  }));
+  charts.quad=new Chart(document.getElementById("quad-chart").getContext("2d"),{
+    type:"bubble",data:{datasets},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{labels:{color:"#94a3b8",boxWidth:12}},tooltip:{callbacks:{title:()=>"",label:i=>{const t=String(i.raw.title||"");return t.length>72?t.slice(0,72)+"…":t;}}}},
+      scales:{x:{min:-1,max:1,grid:{color:"#1e293b"},ticks:{display:false},border:{color:"#334155"}},y:{min:-1,max:1,grid:{color:"#1e293b"},ticks:{display:false},border:{color:"#334155"}}}},
     plugins:[quadPlugin]
   });
 }
 
-// ── DOMAIN CHART ──────────────────────────────────────────────────────────
-function renderDomain(){
-  const doms={};
-  signals.forEach(s=>{doms[s.domain]=(doms[s.domain]||0)+1;});
-  if(domChart){domChart.destroy();domChart=null;}
-  domChart=new Chart(document.getElementById("domain-chart"),{
-    type:"doughnut",
-    data:{labels:Object.keys(doms),datasets:[{data:Object.values(doms),backgroundColor:["#6366f1","#22c55e","#ef4444","#f59e0b","#8b5cf6","#06b6d4"],borderColor:"#1e293b",borderWidth:2}]},
+function renderDom(){
+  destroyChart("dom");
+  const d={};signals.forEach(s=>{d[s.domain]=(d[s.domain]||0)+1;});
+  charts.dom=new Chart(document.getElementById("dom-chart"),{
+    type:"doughnut",data:{labels:Object.keys(d),datasets:[{data:Object.values(d),backgroundColor:["#6366f1","#22c55e","#ef4444","#f59e0b","#8b5cf6","#06b6d4"],borderColor:"#1e293b",borderWidth:2}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#94a3b8",boxWidth:12}}}}
   });
 }
 
-// ── STRUCTURAL BREAKS BAR CHART ───────────────────────────────────────────
-function renderBreakChart(){
+function renderBreak(){
+  destroyChart("brk");
   const cats=["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE"];
-  const total=cats.map(c=>signals.filter(s=>s.primary_category===c).length);
-  const breaks=cats.map(c=>signals.filter(s=>s.primary_category===c&&s.structural_break).length);
-  if(breakChart){breakChart.destroy();breakChart=null;}
-  breakChart=new Chart(document.getElementById("break-chart"),{
+  charts.brk=new Chart(document.getElementById("break-chart"),{
     type:"bar",
-    data:{labels:cats.map(c=>CAT_LABELS[c]),datasets:[
-      {label:"Kaikki signaalit",data:total,backgroundColor:"#334155",borderRadius:4},
-      {label:"Rakenteellinen murros",data:breaks,backgroundColor:"#f472b6",borderRadius:4},
+    data:{labels:cats.map(c=>CL[c]),datasets:[
+      {label:"Kaikki",data:cats.map(c=>signals.filter(s=>s.primary_category===c).length),backgroundColor:"#334155",borderRadius:4},
+      {label:"Rakenteellinen murros",data:cats.map(c=>signals.filter(s=>s.primary_category===c&&s.structural_break).length),backgroundColor:"#f472b6",borderRadius:4},
     ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{labels:{color:"#94a3b8",boxWidth:12}}},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#94a3b8",boxWidth:12}}},
       scales:{x:{ticks:{color:"#64748b"},grid:{color:"#1e293b"}},y:{ticks:{color:"#64748b",stepSize:1},beginAtZero:true,grid:{color:"#1e293b"}}}}
   });
 }
 
-// ── TIMELINE ──────────────────────────────────────────────────────────────
-function weekLabel(d){
-  const date=new Date(d); if(isNaN(date)) return"unknown";
-  const w=Math.floor((date-new Date(date.getFullYear(),0,1))/604800000);
-  return`V${w+1}/${date.getFullYear()}`;
-}
-function renderTimeline(){
+function renderTl(){
+  destroyChart("tl");
   const cats=["STRENGTHENS","NEW_DEMOCRACY","WEAKENS","COLLAPSE"];
   const weeks={};
   signals.forEach(s=>{
-    const w=weekLabel(s.scanned_at||s.published||"");
+    const d=new Date(s.scanned_at||s.published||"");if(isNaN(d)) return;
+    const w=`V${Math.floor((d-new Date(d.getFullYear(),0,1))/604800000)+1}/${d.getFullYear()}`;
     if(!weeks[w]){weeks[w]={};cats.forEach(c=>weeks[w][c]=0);}
     if(cats.includes(s.primary_category)) weeks[w][s.primary_category]++;
   });
-  const labels=Object.keys(weeks).filter(k=>k!=="unknown").sort();
-  const mk=(cat,color,lbl)=>({label:lbl,data:labels.map(l=>weeks[l]?.[cat]||0),borderColor:color,backgroundColor:color+"33",fill:true,tension:0.3,pointRadius:3});
-  if(tlChart){tlChart.destroy();tlChart=null;}
-  tlChart=new Chart(document.getElementById("timeline-chart"),{
+  const labels=Object.keys(weeks).sort();
+  const mk=(cat,col,lbl)=>({label:lbl,data:labels.map(l=>weeks[l]?.[cat]||0),borderColor:col,backgroundColor:col+"33",fill:true,tension:0.3,pointRadius:3});
+  charts.tl=new Chart(document.getElementById("tl-chart"),{
     type:"line",
     data:{labels,datasets:[mk("STRENGTHENS","#22c55e","Vahvistuu"),mk("NEW_DEMOCRACY","#8b5cf6","Uusi demokratia"),mk("WEAKENS","#f59e0b","Heikentyy"),mk("COLLAPSE","#ef4444","Romahtaa")]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#94a3b8",boxWidth:12}}},scales:{x:{ticks:{color:"#64748b"}},y:{ticks:{color:"#64748b",stepSize:1},beginAtZero:true}}}
   });
 }
 
-// ── MAIN RENDER ───────────────────────────────────────────────────────────
-function render(){
+// ── RENDER ────────────────────────────────────────────────────────────────
+function renderAll(){
   renderStats();
-  renderList("signal-list",filtered());
-  renderList("outlier-list",filteredOutliers(),true);
-  if(activePage==="matrix")   renderMatrix();
-  if(activePage==="scenarios"){renderQuadrant();renderDomain();renderBreakChart();}
-  if(activePage==="timeline") renderTimeline();
-}
-
-function renderActivePage(){
-  if(activePage==="matrix")    renderMatrix();
-  if(activePage==="scenarios"){renderQuadrant();renderDomain();renderBreakChart();}
-  if(activePage==="timeline")  renderTimeline();
+  fillList("feed-list",getFeed(),false);
+  fillList("out-list",getOut(),true);
+  // Only render charts for visible page to avoid canvas errors
+  if(curPage==="matrix")    renderMatrix();
+  if(curPage==="scenarios"){renderQuad();renderDom();renderBreak();}
+  if(curPage==="timeline")  renderTl();
 }
 
 // ── EVENTS ────────────────────────────────────────────────────────────────
-document.querySelectorAll(".nav-tab").forEach(t=>t.addEventListener("click",()=>{
-  document.querySelectorAll(".nav-tab").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-  t.classList.add("active");
-  activePage=t.dataset.page;
-  document.getElementById("page-"+activePage).classList.add("active");
-  renderActivePage();
+// Page navigation
+document.querySelectorAll(".nav-btn").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  btn.classList.add("active");
+  curPage=btn.dataset.page;
+  document.getElementById("page-"+curPage).classList.add("active");
+  // Render chart for newly visible page
+  if(curPage==="matrix")    renderMatrix();
+  if(curPage==="scenarios"){renderQuad();renderDom();renderBreak();}
+  if(curPage==="timeline")  renderTl();
 }));
 
-document.querySelectorAll(".tab[data-scope!='outlier'], .tab:not([data-scope])").forEach(t=>{
-  if(t.dataset.scope==="outlier") return;
-  t.addEventListener("click",()=>{
-    t.closest(".cat-tabs").querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-    t.classList.add("active");
-    activeFeedTab=t.dataset.cat;
-    renderList("signal-list",filtered());
-  });
-});
-
-document.querySelectorAll(".tab[data-scope='outlier']").forEach(t=>t.addEventListener("click",()=>{
-  document.querySelectorAll(".tab[data-scope='outlier']").forEach(x=>x.classList.remove("active"));
-  t.classList.add("active");
-  activeOutlierTab=t.dataset.cat;
-  renderList("outlier-list",filteredOutliers(),true);
+// Feed category tabs
+document.querySelectorAll("#feed-tabs .ctab").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll("#feed-tabs .ctab").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  feedCat=btn.dataset.cat;
+  fillList("feed-list",getFeed(),false);
 }));
 
-["domain-filter","strength-filter","finn-only"].forEach(id=>
-  document.getElementById(id).addEventListener("change",()=>renderList("signal-list",filtered()))
-);
+// Outlier category tabs
+document.querySelectorAll("#out-tabs .ctab").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll("#out-tabs .ctab").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  outCat=btn.dataset.cat;
+  fillList("out-list",getOut(),true);
+}));
 
-loadSignals();
+// Filters
+["dom-f","str-f","fi-f"].forEach(id=>document.getElementById(id).addEventListener("change",()=>fillList("feed-list",getFeed(),false)));
+
+load();
 </script>
 </body>
 </html>
