@@ -65,20 +65,43 @@ RSS_FEEDS = {
     "firstdraft":       "https://firstdraftnews.org/feed/",
     "poynter":          "https://www.poynter.org/feed/",
 
+    # ── NEW: Radical signal sources ──────────────────────────────────────────
+
+    # Crisis & conflict early warning
+    "crisis_group":     "https://www.crisisgroup.org/rss.xml",
+    "civicus":          "https://www.civicus.org/index.php/feed",
+    "international_idea": "https://www.idea.int/rss.xml",
+
+    # Investigative / backsliding monitoring
+    "occrp":            "https://www.occrp.org/en/rss",
+    "vsquare":          "https://vsquare.org/feed/",
+
+    # Governance innovation & futures
+    "nesta":            "https://www.nesta.org.uk/feed/",
+    "govinsider":       "https://govinsider.asia/feed/",
+    "apolitical":       "https://apolitical.co/feed",
+
+    # Academic / speculative
+    "ssrn_polisci":     "https://papers.ssrn.com/rss/SSRN_GetFile.cfm?abstractid=&ContentType=topTen&network=Political+Science+Network",
+    "lawfare":          "https://www.lawfaremedia.org/feed",
+    "verfassungsblog":  "https://verfassungsblog.de/feed/",  # Constitutional law & democracy
+
     # GDELT targeted queries
     "gdelt_ai_dem":     "https://api.gdeltproject.org/api/v2/doc/doc?query=AI+democracy&mode=artlist&format=rss",
     "gdelt_ai_elect":   "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence+elections&mode=artlist&format=rss",
     "gdelt_disinfo":    "https://api.gdeltproject.org/api/v2/doc/doc?query=disinformation+AI+politics&mode=artlist&format=rss",
+    "gdelt_autocracy":  "https://api.gdeltproject.org/api/v2/doc/doc?query=AI+autocracy+surveillance+democracy&mode=artlist&format=rss",
+    "gdelt_new_dem":    "https://api.gdeltproject.org/api/v2/doc/doc?query=AI+deliberative+democracy+participation+new&mode=artlist&format=rss",
 }
 
 # ── SETTINGS ──────────────────────────────────────────────────────────────────
 ARTICLES_PER_FEED   = 20
 OUTPUT_FILE         = "signals.json"
 MODEL               = "claude-sonnet-4-6"
-MAX_TOKENS          = 600
-FEED_TIMEOUT        = 15    # seconds per feed request
-API_RETRIES         = 3     # number of retry attempts for Claude API calls
-RETRY_BACKOFF       = 5     # seconds between retries (doubles each attempt)
+MAX_TOKENS          = 700
+FEED_TIMEOUT        = 15
+API_RETRIES         = 3
+RETRY_BACKOFF       = 5
 
 # ── CLASSIFICATION PROMPT ─────────────────────────────────────────────────────
 PROMPT = """
@@ -116,7 +139,6 @@ CLASSIFICATION RULES:
 - Add SECONDARY categories where the signal also has meaningful resonance.
 - Use AMBIGUOUS as primary only when no scenario clearly dominates and the item is
   genuinely relevant. Do not use it to avoid a difficult judgment.
-- Confidence reflects clarity of mapping, not relevance.
 
 DOMAIN OPTIONS:
 - epistemic: truth, information environment, media
@@ -128,6 +150,32 @@ DOMAIN OPTIONS:
 
 SIGNAL STRENGTH: weak / moderate / strong
 SIGNAL TYPE: emerging / accelerating / plateauing / reversing
+
+IMPACT AND LIKELIHOOD ASSESSMENT:
+Rate the signal on two independent dimensions using a 1–5 scale:
+
+impact (1–5): How consequential would this signal be for democracy if the trend it
+represents fully developed? Score based on systemic significance, not current scale.
+  1 = marginal, affects narrow context
+  2 = moderate, affects one domain or country
+  3 = significant, affects multiple domains or the European level
+  4 = major, threatens or transforms core democratic architecture
+  5 = civilizational, fundamentally alters democratic governance globally
+
+likelihood (1–5): How probable is this trajectory materializing within 5–10 years,
+given current evidence and structural conditions?
+  1 = very unlikely, speculative or fringe
+  2 = possible but requires unlikely conditions
+  3 = plausible given current trajectory
+  4 = probable, strong supporting trends
+  5 = near-certain, already in motion
+
+structural_break (true/false): Does this signal suggest a DISCONTINUOUS rupture —
+something that would NOT be predicted by extrapolating current trends? Mark true for:
+  - paradigm shifts in how AI relates to democratic governance
+  - sudden collapses or emergences that bypass incremental change
+  - signals that would constitute a qualitative break, not just acceleration
+  Mark false for signals that represent gradual continuation of existing dynamics.
 
 News item:
 TITLE: {title}
@@ -142,6 +190,9 @@ Respond ONLY with valid JSON — no preamble, no markdown backticks:
   "signal_strength": "weak|moderate|strong",
   "signal_type": "emerging|accelerating|plateauing|reversing",
   "domain": "epistemic|procedural|institutional|participatory|power|multiple",
+  "impact": 1-5,
+  "likelihood": 1-5,
+  "structural_break": true or false,
   "confidence": 0.0 to 1.0,
   "rationale": "2-3 sentences on the primary reading",
   "secondary_rationale": "1-2 sentences on secondary dimensions, or empty string if none",
@@ -151,31 +202,27 @@ Respond ONLY with valid JSON — no preamble, no markdown backticks:
 
 # ── LOAD EXISTING SIGNALS ─────────────────────────────────────────────────────
 def load_existing():
-    """Load existing signals with defensive handling of malformed entries."""
     try:
         with open(OUTPUT_FILE, encoding="utf-8") as f:
             data = json.load(f)
         if not isinstance(data, list):
             print("  ⚠ signals.json is not a list — starting fresh")
             return []
-        # Keep only entries that are dicts with a non-empty url string
         valid = [s for s in data if isinstance(s, dict) and isinstance(s.get("url"), str) and s["url"]]
         if len(valid) < len(data):
-            print(f"  ⚠ Dropped {len(data)-len(valid)} malformed entries from existing signals")
+            print(f"  ⚠ Dropped {len(data)-len(valid)} malformed entries")
         return valid
     except FileNotFoundError:
         return []
     except json.JSONDecodeError as e:
-        print(f"  ⚠ signals.json is corrupt ({e}) — starting fresh")
+        print(f"  ⚠ signals.json corrupt ({e}) — starting fresh")
         return []
 
 # ── FETCH ARTICLES ────────────────────────────────────────────────────────────
 def fetch_articles(existing_urls: set) -> list:
-    """Fetch RSS feeds and return only articles not already in the database."""
     articles = []
     for source, url in RSS_FEEDS.items():
         try:
-            # Use requests with timeout, then parse the content
             response = requests.get(url, timeout=FEED_TIMEOUT, headers={"User-Agent": "Mozilla/5.0"})
             response.raise_for_status()
             feed = feedparser.parse(response.content)
@@ -183,7 +230,7 @@ def fetch_articles(existing_urls: set) -> list:
             for entry in feed.entries[:ARTICLES_PER_FEED]:
                 article_url = entry.get("link", "").strip()
                 if not article_url or article_url in existing_urls:
-                    continue  # skip duplicates before classification
+                    continue
                 articles.append({
                     "source":    source,
                     "title":     entry.get("title", "").strip()[:300],
@@ -201,7 +248,6 @@ def fetch_articles(existing_urls: set) -> list:
 
 # ── CLASSIFY ONE ARTICLE ──────────────────────────────────────────────────────
 def classify(client, article) -> dict:
-    """Send article to Claude with retry/backoff on failure."""
     prompt = PROMPT.format(
         title=article["title"],
         source=article["source"],
@@ -218,14 +264,19 @@ def classify(client, article) -> dict:
             )
             raw = response.content[0].text.strip()
             result = json.loads(raw)
-            # Validate required fields; fill safe defaults if missing
             result.setdefault("relevant", False)
             result.setdefault("primary_category", "AMBIGUOUS")
             result.setdefault("secondary_categories", [])
+            result.setdefault("impact", 1)
+            result.setdefault("likelihood", 1)
+            result.setdefault("structural_break", False)
             result.setdefault("confidence", 0.0)
             result.setdefault("rationale", "")
             result.setdefault("secondary_rationale", "")
             result.setdefault("finnish_relevance", False)
+            # Clamp impact/likelihood to valid range
+            result["impact"]     = max(1, min(5, int(result["impact"])))
+            result["likelihood"] = max(1, min(5, int(result["likelihood"])))
             return {**article, **result, "scanned_at": datetime.utcnow().isoformat()}
         except json.JSONDecodeError:
             print(f"    JSON parse error (attempt {attempt}/{API_RETRIES})")
@@ -233,8 +284,9 @@ def classify(client, article) -> dict:
             print(f"    API error (attempt {attempt}/{API_RETRIES}): {e}")
         if attempt < API_RETRIES:
             time.sleep(delay)
-            delay *= 2  # exponential backoff
-    return {**article, "relevant": False, "error": "failed_after_retries", "scanned_at": datetime.utcnow().isoformat()}
+            delay *= 2
+    return {**article, "relevant": False, "error": "failed_after_retries",
+            "scanned_at": datetime.utcnow().isoformat()}
 
 # ── SAVE RESULTS ──────────────────────────────────────────────────────────────
 def save(existing: list, new_signals: list):
@@ -271,7 +323,7 @@ def main():
         if result.get("relevant") is True:
             new_signals.append(result)
 
-    print(f"\n{len(new_signals)} relevant signals identified out of {len(articles)} articles")
+    print(f"\n{len(new_signals)} relevant signals out of {len(articles)} articles")
     save(existing, new_signals)
 
 if __name__ == "__main__":
