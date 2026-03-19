@@ -23,7 +23,6 @@ RSS_FEEDS = {
     "yle_uutiset":      "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET",
     "yle_tekno":        "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-34837",
     "yle_politiikka":   "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET&concepts=18-38033",
-    "hs_paakirj":       "https://www.hs.fi/rss/paakirjoitukset.xml",
     "mtv_uutiset":      "https://www.mtvuutiset.fi/rss/uutiset.rss",
 
     # Finnish government & institutions
@@ -33,7 +32,6 @@ RSS_FEEDS = {
     "traficom":         "https://www.traficom.fi/fi/rss/uutiset",
 
     # EU policy & governance
-    "politico_eu":      "https://www.politico.eu/feed/",
     "euractiv_digital": "https://www.euractiv.com/sections/digital/feed/",
     "euractiv_ai":      "https://www.euractiv.com/sections/digital/artificial-intelligence/feed/",
     "eu_commission":    "https://ec.europa.eu/newsroom/dae/rss.cfm",
@@ -42,16 +40,8 @@ RSS_FEEDS = {
 
     # Global news
     "reuters_tech":     "https://feeds.reuters.com/reuters/technologyNews",
-    "guardian_tech":    "https://www.theguardian.com/technology/rss",
-    "guardian_media":   "https://www.theguardian.com/media/rss",
     "bbc_tech":         "https://feeds.bbci.co.uk/news/technology/rss.xml",
     "ap_tech":          "https://feeds.apnews.com/rss/apf-technology",
-
-    # AI-specific
-    "mit_tech":         "https://www.technologyreview.com/feed/",
-    "wired_ai":         "https://www.wired.com/feed/tag/artificial-intelligence/latest/rss",
-    "aisnakeoil":       "https://www.aisnakeoil.com/feed",
-    "import_ai":        "https://importai.substack.com/feed",
 
     # Democracy & governance research
     "freedom_house":    "https://freedomhouse.org/rss.xml",
